@@ -46,13 +46,13 @@
 					currentValue = [NSMutableString string];
 				}
 				
-				currentKey = [line substringToIndex:prefixRange.location];
+				currentKey = [[line substringToIndex:prefixRange.location] lowercaseString];
 				[currentValue appendString:[line substringFromIndex:prefixRange.location + 1]];
 			}
 		}
 		
 		if( [currentKey isEqualToString:@""] == NO ) {
-			[_values setObject:currentValue forKey:currentKey];
+			[_values setObject:currentValue forKey:[currentKey lowercaseString]];
 		}
 		
 		for( NSString *key in [_values allKeys] ) {

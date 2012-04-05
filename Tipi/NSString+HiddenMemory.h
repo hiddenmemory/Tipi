@@ -40,4 +40,6 @@
 + (NSString*)stringByCreatingWhitespaceOfLength:(NSInteger)length;
 - (NSString*)stringByTrimmingWhitespace;
 
+- (NSString*)removePrefix:(NSString*)prefix suffix:(NSString*)suffix;
+
 @end

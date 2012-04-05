@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 hiddenMemory Ltd. All rights reserved.
 //
 
-#import "TPParser.h"
+#import "TPDataParser.h"
 
-@interface TPTextDataParser : TPParser
+@interface TPTextDataParser : TPDataParser
 + (TPTextDataParser*)parserForFile:(NSString*)path;
 @end

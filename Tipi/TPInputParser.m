@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 hiddenMemory Ltd. All rights reserved.
 //
 
-#import "TPParser.h"
+#import "TPDataParser.h"
 
-@implementation TPParser
+@implementation TPDataParser
 
 - (NSDictionary*)values {
 	return [NSDictionary dictionary];

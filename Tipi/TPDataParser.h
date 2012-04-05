@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TPParser : NSObject
+@interface TPDataParser : NSObject
 - (NSDictionary*)values;
 @end

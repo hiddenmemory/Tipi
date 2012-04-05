@@ -16,7 +16,18 @@
 	NSMutableDictionary *markdownValues = [NSMutableDictionary dictionary];
 	
 	for( NSString *key in [values allKeys] ) {
-		[markdownValues setObject:discountToHTML([values objectForKey:key]) forKey:key];
+		NSMutableString *htmlSnippet = [NSMutableString stringWithString:discountToHTML([values objectForKey:key])];
+		
+		if( [htmlSnippet hasPrefix:@"<p>"] ) {
+			[htmlSnippet deleteCharactersInRange:NSMakeRange(0, [@"<p>" length])];
+		}
+		if( [htmlSnippet hasSuffix:@"</p>"] ) {
+			NSUInteger tagLength = [@"</p>" length];
+			[htmlSnippet deleteCharactersInRange:NSMakeRange([htmlSnippet length] - tagLength, tagLength)];
+		}
+		
+		[markdownValues setObject:htmlSnippet
+						   forKey:key];
 	}
 
 	return markdownValues;
