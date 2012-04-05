@@ -94,10 +94,10 @@
 			return [node.values objectAtIndex:1];
 		} copy] forKey:[[node.values objectAtIndex:0] lowercaseString]];
 		
-		NSLog(@"Globals: %@", environment);
+		NSLog(@"Environment: %@", environment);
 		
 		return @"";
-	} copy] forKey:@"global"];
+	} copy] forKey:@"env"];
 
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
 		NSMutableString *expansion = [NSMutableString string];
