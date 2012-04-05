@@ -16,7 +16,7 @@
 @end
 
 @implementation TPTextDataParser
-+ (TPTextDataParser*)parserForFile:(NSString*)path {
++ (id)parserForFile:(NSString*)path {
 	return [[[self class] alloc] initWithFile:path];
 }
 - (id)initWithFile:(NSString *)path {

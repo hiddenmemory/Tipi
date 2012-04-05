@@ -9,5 +9,5 @@
 #import "TPDataParser.h"
 
 @interface TPTextDataParser : TPDataParser
-+ (TPTextDataParser*)parserForFile:(NSString*)path;
++ (id)parserForFile:(NSString*)path;
 @end

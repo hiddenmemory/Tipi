@@ -1,21 +1,38 @@
+{{#template case_study title_cs client_cs description_cs platform_cs testimonial_cs Technologies_cs}}
 <html>
 	<head>
-        <title>{{ title }}</title>
+        <title>{{ title_cs }}</title>
         <meta name="author" value="{{ author }}">
 	</head>
 	<body>
-		<h1>{{title}}</h1>
-		<h2>Client: {{client}}</h2>
+		<h1>{{title_cs}}</h1>
+		<h2>Client: {{client_cs}}</h2>
 		
-		{{description}}
+		{{description_cs}}
 		
 		<h3>Platform</h3>
-		<blockquote>{{platform}}</blockquote>
+		<blockquote>{{platform_cs}}</blockquote>
 		
 		<h3>Testimonial</h3>
-		{{Testimonial}}
+		{{Testimonial_cs}}
 		
 		<h4>Technologies</h4>
-		{{Technologies}}
+		{{Technologies_cs}}
+		
+		{{testvalue}}
 	</body>
 </html>
+{{/def}}
+
+{{#include /Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test01.txt}}
+	{{#case_study title client description platform Testimonial Technologies}}
+		{{# bind testvalue }}
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		{{/ bind }}
+	{{/case_study}}
+{{/include}}
+
+
+{{ foo }}
+
+{{ // This is a comment }}

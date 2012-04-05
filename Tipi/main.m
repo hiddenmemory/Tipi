@@ -18,7 +18,7 @@ int main(int argc, const char * argv[]) {
 		TPDataParser *p = [TPMarkdownDataParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test01.txt"];
 		NSLog(@"p.values = %@", [p values]);
 		
-		TPTemplateParser *q = [TPTemplateParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test02.html"];
+		TPTemplateParser *q = [TPTemplateParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test01.html"];
 		NSLog(@"Expansion: %@", [q expansionUsingValues:p.values]);
 	}
     return 0;

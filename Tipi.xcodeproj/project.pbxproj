@@ -109,6 +109,7 @@
 		838CA727152DC02D0013C064 /* TPTemplateNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTemplateNode.h; sourceTree = "<group>"; };
 		838CA728152DC02D0013C064 /* TPTemplateNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTemplateNode.m; sourceTree = "<group>"; };
 		83C656BC152DD61500454E32 /* Test02.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Test02.html; sourceTree = "<group>"; };
+		83C656BE152DFFA200454E32 /* Test03.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Test03.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +186,7 @@
 				838CA683152DB39F0013C064 /* Test01.txt */,
 				838CA723152DBE250013C064 /* Test01.html */,
 				83C656BC152DD61500454E32 /* Test02.html */,
+				83C656BE152DFFA200454E32 /* Test03.html */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;

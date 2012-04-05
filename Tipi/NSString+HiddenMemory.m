@@ -277,13 +277,17 @@
 - (NSString*)removePrefix:(NSString*)prefix suffix:(NSString*)suffix {
 	NSString *str = self;
 	
-	if( [str hasPrefix:prefix] ) {
+	NSLog(@"Before: %@, P: %@, S: %@", str, prefix, suffix);
+	
+	if( prefix && [str hasPrefix:prefix] ) {
 		str = [str stringByReplacingCharactersInRange:NSMakeRange(0, [prefix length]) withString:@""];
 	}
 	
-	if( [str hasSuffix:suffix] ) {
+	if( suffix && [str hasSuffix:suffix] ) {
 		str = [str stringByReplacingCharactersInRange:NSMakeRange([str length] - [suffix length], [suffix length]) withString:@""];
 	}
+	
+	NSLog(@"After: %@", str);
 
 	return str;
 }

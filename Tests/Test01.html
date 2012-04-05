@@ -1,9 +1,13 @@
-{{# def page title author }}
+{{# template page title_test client_test }}
 <html>
 	<head>
-        <title>{{ title }}</title>
+        <title>{{ title_test }}</title>
         <meta name="author" value="{{ author }}">
-			</head>
-	<body>{{ this }}</body>
+	</head>
+	<body>{{ client_test }}</body>
 </html>
 {{/ def }}
+
+{{ global title "This is a title" }}
+{{ global client "This is a client" }}
+{{ page title client }}
