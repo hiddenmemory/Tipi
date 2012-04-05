@@ -60,19 +60,13 @@
 	}
 	else {
 		NSString *key = [self.name lowercaseString];
-
-		NSLog(@"Looking for value: %@", key);
 		
 		if( [global objectForKey:key] ) {
-			NSLog(@" -> Found global value: %@", key);
-			
 			NSString *(^expansionBlock)( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) = [global objectForKey:key];
 			
 			NSMutableArray *parameters = [NSMutableArray array];
 			for( NSString *_valueName in self.values ) {
 				NSString *valueName = [_valueName lowercaseString];
-				
-				NSLog(@" ---> Looking up parameter value %@ (%@)", valueName, _valueName);
 				
 				NSString *(^valueExpansionBlock)( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) = [global objectForKey:valueName];
 				if( valueExpansionBlock ) {
@@ -81,18 +75,17 @@
 				else if( [_values objectForKey:valueName] ) {
 					[parameters addObject:[_values objectForKey:valueName]];
 				}
+				else {
+					[parameters addObject:_valueName];
+				}
 			}
 			
 			[expansion appendString:expansionBlock(self, _values, global, parameters)];
 		}
 		else if( [_values objectForKey:key] ) {
-			NSLog(@" -> Found local value: %@", key);
-			
 			[expansion appendString:[_values objectForKey:key]];
 		}
 		else {
-			NSLog(@" -> Unable to find value");
-			
 			for( TPTemplateNode *node in childNodes ) {
 				[expansion appendString:[node expansionUsingValues:_values global:global]];
 			}
