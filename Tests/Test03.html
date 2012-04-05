@@ -1,1 +1,37 @@
-{{ a long item to get "right out of the" box 'of magic' "fun \"and\" games" }}
+
+{{#def A}}
+	{{ValueB}}
+{{/def}}
+
+{{env ValueB "This is ValueB"}}
+
+{{#def B}}
+	{{ValueB}}
+{{/def}}
+
+{{#def X}}
+	Begin X
+	{{#def Z}}
+		Z has been here.
+	{{/def Z}}
+	Begin Y
+	{{#def Y}}
+		[1] Z has been here:
+		{{Z}}
+		Begin Z
+		{{#def Z}}
+			Z hath been here.
+		{{/def Z}}
+		[2] Z hath been here:
+		{{Z}}
+	{{/def Y}}
+	{{Y}}
+	[3] Z has been here:
+	{{Z}}
+{{/def X}}
+
+{{A}}
+
+{{B}}
+
+{{X}}

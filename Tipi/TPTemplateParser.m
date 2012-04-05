@@ -46,70 +46,74 @@
 	}
 	return self;
 }
-- (NSString*)expansionUsingValues:(NSDictionary*)values {
-	NSMutableDictionary *globals = [NSMutableDictionary dictionary];
+- (NSString*)expansionUsingEnvironment:(NSDictionary*)values {
+	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
 	
-	[globals setObject:[^NSString*( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) { return @""; } copy]
+	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) { return @""; } copy]
 				forKey:@"bind"];
 	
-	[globals setObject:[^NSString*( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *_ ) {
+	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
 		NSString *key = [[node.values objectAtIndex:0] lowercaseString];
-		if( [global objectForKey:key] == nil ) {
-			[global setObject:[^NSString*( TPTemplateNode *_, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) {
-				NSMutableString *expansion = [NSMutableString string];
-				NSMutableDictionary *environment = [NSMutableDictionary dictionary];
-				
-				NSMutableString *thisExpansion = [NSMutableString string];
-				for( TPTemplateNode *childNode in _.childNodes ) {
-					[thisExpansion appendString:[childNode expansionUsingValues:values global:global]];
+		NSMutableDictionary *freshEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
+		
+		[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *environment, NSArray *parameters ) {
+			NSMutableString *expansion = [NSMutableString string];
+			NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:freshEnvironment];
+			
+			NSMutableString *thisExpansion = [NSMutableString string];
+			for( TPTemplateNode *childNode in currentNode.childNodes ) {
+				[thisExpansion appendString:[childNode expansionUsingEnvironment:freshEnvironment]];
+			}
+			[invokeEnvironment setObject:thisExpansion forKey:@"this"];
+			
+			[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+				[invokeEnvironment setObject:[parameters objectAtIndex:idx] forKey:[obj lowercaseString]];
+			}];
+			
+			for( TPTemplateNode *bindNode in currentNode.childNodes ) {
+				if( [bindNode.name isEqualToString:@"bind"] ) {
+					[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
+						[invokeEnvironment setObject:[obj expansionUsingEnvironment:freshEnvironment]
+											  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+					}];
 				}
-				[environment setObject:thisExpansion forKey:@"this"];
-				
-				[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-					[environment setObject:[parameters objectAtIndex:idx] forKey:[obj lowercaseString]];
-				}];
-				
-				for( TPTemplateNode *childNode in _.childNodes ) {
-					if( [childNode.name isEqualToString:@"bind"] ) {
-						[environment setObject:[childNode expansionUsingValues:values global:global]
-										forKey:[[childNode.values objectAtIndex:0] lowercaseString]];
-					}
-				}
-				
-				for( TPTemplateNode *childNode in node.childNodes ) {
-					[expansion appendString:[childNode expansionUsingValues:environment global:global]];
-				}
-				
-				return expansion;
-			} copy] forKey:key];
-		}
-		return @"";
-	} copy] forKey:@"template"];
+			}
+			
+			for( TPTemplateNode *childNode in node.childNodes ) {
+				[expansion appendString:[childNode expansionUsingEnvironment:invokeEnvironment]];
+			}
+			
+			return expansion;
+		} copy] forKey:key];
 
-	[globals setObject:[^NSString*( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) {
-		[global setObject:[^NSString*( TPTemplateNode *_node, NSDictionary *_values, NSMutableDictionary *_global, NSArray *_parameters ) {
+		return @"";
+	} copy] forKey:@"def"];
+
+	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
+		[environment setObject:[^NSString*( TPTemplateNode *_node, NSMutableDictionary *environment, NSArray *parameters ) {
 			return [node.values objectAtIndex:1];
 		} copy] forKey:[[node.values objectAtIndex:0] lowercaseString]];
 		
-		NSLog(@"Globals: %@", global);
+		NSLog(@"Environment: %@", environment);
 		
 		return @"";
-	} copy] forKey:@"global"];
+	} copy] forKey:@"env"];
 
-	[globals setObject:[^NSString*( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) {
+	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
 		NSMutableString *expansion = [NSMutableString string];
 		TPMarkdownDataParser *parser = [TPMarkdownDataParser parserForFile:[node.values objectAtIndex:0]];
-		NSDictionary *environment = parser.values;
+		
+		NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
+		[invokeEnvironment addEntriesFromDictionary:parser.values];
 		
 		for( TPTemplateNode *childNode in node.childNodes ) {
-			[expansion appendString:[childNode expansionUsingValues:environment global:global]];
+			[expansion appendString:[childNode expansionUsingEnvironment:invokeEnvironment]];
 		}
 		
 		return expansion;
 	} copy] forKey:@"include"];
 	
-	return [root expansionUsingValues:values
-							   global:globals];
+	return [root expansionUsingEnvironment:environment];
 }
 - (void)parseContent:(NSMutableString*)content parent:(TPTemplateNode*)parent {
 	while( [content length] ) {

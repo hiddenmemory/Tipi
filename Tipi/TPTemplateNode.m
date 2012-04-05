@@ -50,49 +50,52 @@
 - (NSString*)description {
 	return [self descriptionWithDepth:0];
 }
-- (NSString*)expansionUsingValues:(NSDictionary *)_values 
-						   global:(NSMutableDictionary*)global 
-{
-	NSMutableString *expansion = [NSMutableString string];
+- (NSString*)expansionUsingEnvironment:(NSMutableDictionary*)environment {
 	
 	if( self.type == TPNodeText ) {
-		[expansion appendString:self.originalValue];
+		return self.originalValue;
 	}
 	else {
+		NSMutableString *expansion = [NSMutableString string];
 		NSString *key = [self.name lowercaseString];
 		
-		if( [global objectForKey:key] ) {
-			NSString *(^expansionBlock)( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) = [global objectForKey:key];
+		if( [environment objectForKey:key] ) {
+			id value = [environment objectForKey:key];
 			
-			NSMutableArray *parameters = [NSMutableArray array];
-			for( NSString *_valueName in self.values ) {
-				NSString *valueName = [_valueName lowercaseString];
-				
-				NSString *(^valueExpansionBlock)( TPTemplateNode *node, NSDictionary *values, NSMutableDictionary *global, NSArray *parameters ) = [global objectForKey:valueName];
-				if( valueExpansionBlock ) {
-					[parameters addObject:valueExpansionBlock(self, _values, global, nil)];
-				}
-				else if( [_values objectForKey:valueName] ) {
-					[parameters addObject:[_values objectForKey:valueName]];
-				}
-				else {
-					[parameters addObject:_valueName];
-				}
+			if( [[value class] isSubclassOfClass:[NSString class]] ) {
+				[expansion appendString:value];
 			}
-			
-			[expansion appendString:expansionBlock(self, _values, global, parameters)];
-		}
-		else if( [_values objectForKey:key] ) {
-			[expansion appendString:[_values objectForKey:key]];
+			else {
+				NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global, NSArray *parameters ) = value;
+				
+				NSMutableArray *parameters = [NSMutableArray array];
+				
+				for( NSString *_valueName in self.values ) {
+					NSString *valueName = [_valueName lowercaseString];
+					id valueValue = [environment objectForKey:valueName];
+					
+					if( valueValue == nil ) {
+						[parameters addObject:_valueName];
+					}
+					else if( [[valueValue class] isSubclassOfClass:[NSString class]] ) {
+						[parameters addObject:valueValue];
+					}
+					else {
+						NSString *(^valueExpansionBlock)( TPTemplateNode *node, NSMutableDictionary *global, NSArray *parameters ) = valueValue;
+						[parameters addObject:valueExpansionBlock(self, environment, nil)];
+					}
+				}
+				
+				[expansion appendString:expansionBlock(self, environment, parameters)];
+			}
 		}
 		else {
 			for( TPTemplateNode *node in childNodes ) {
-				[expansion appendString:[node expansionUsingValues:_values global:global]];
+				[expansion appendString:[node expansionUsingEnvironment:environment]];
 			}
 		}
+		return expansion;
 	} 
-	
-	return expansion;
 }
 
 @end

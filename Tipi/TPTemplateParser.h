@@ -10,5 +10,5 @@
 
 @interface TPTemplateParser : NSObject
 + (TPTemplateParser*)parserForFile:(NSString*)path;
-- (NSString*)expansionUsingValues:(NSDictionary*)values;
+- (NSString*)expansionUsingEnvironment:(NSDictionary*)values;
 @end

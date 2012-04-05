@@ -23,6 +23,5 @@ typedef enum {
 @property (readonly) NSMutableArray *childNodes;
 
 + (TPTemplateNode*)node;
-- (NSString*)expansionUsingValues:(NSDictionary*)values
-						   global:(NSMutableDictionary*)global;
+- (NSString*)expansionUsingEnvironment:(NSMutableDictionary*)environment;
 @end
