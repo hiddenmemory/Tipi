@@ -113,7 +113,7 @@
 		return expansion;
 	} copy] forKey:@"include"];
 	
-	return [root expansionUsingEnvironment:environment];
+	return [[root expansionUsingEnvironment:environment] stringByTrimmingWhitespace];
 }
 - (void)parseContent:(NSMutableString*)content parent:(TPTemplateNode*)parent {
 	while( [content length] ) {
