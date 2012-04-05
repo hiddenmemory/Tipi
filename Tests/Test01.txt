@@ -1,0 +1,22 @@
+Title: Progression Player
+
+Client: Progression Sports Ltd
+
+Description: 
+
+*Progression Player* is an application that allows a kitesurfer to buy training videos, download and watch them on their iDevice and watch them whenever they want. Whether that be in the comfort of their own home, streaming over AirPlay to their Apple TV, or on some remote beach enjoying sun and strong winds.
+
+*Progression Sports* (the company) worked closely with _hiddenMemory_ to build not only an application, but a complete digital content distribution network. The result being a new way for kitesurfers to get content they desire and learn new skills wherever they may be within the world.
+
+Platform: iPhone, iPod touch
+
+Testimonial:
+
+"Creating your first iOS app is pretty daunting  but hiddenMemory made it a great experience - helping us understanding all the aspects of development process, going over and above to ensure everything went smoothly and we ended up with a great polished finished app. We made the right choice going with hiddenMemory!"
+Rob Claisse, Owner & CEO, Progression Sports Ltd
+
+Technologies: 
+
+- Advanced interaction between native application and remote services. 
+- Low level networking. 
+- Advanced media playback.

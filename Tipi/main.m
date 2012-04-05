@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-int main(int argc, const char * argv[])
-{
+#import "TPParser.h"
+#import "TPMarkdownDataParser.h"
+
+int main(int argc, const char * argv[]) {
 
 	@autoreleasepool {
-	    
-	    // insert code here...
-	    NSLog(@"Hello, World!");
-	    
+		TPParser *p = [TPMarkdownDataParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test01.txt"];
+		NSLog(@"p.values = %@", [p values]);
 	}
     return 0;
 }
