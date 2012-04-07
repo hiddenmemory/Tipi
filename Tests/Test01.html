@@ -1,4 +1,4 @@
-{{# template page title_test client_test }}
+{{# def page title_test client_test }}
 <html>
 	<head>
         <title>{{ title_test }}</title>
@@ -8,6 +8,6 @@
 </html>
 {{/ def }}
 
-{{ global title "This is a title" }}
-{{ global client "This is a client" }}
+{{ def title "This is a title" }}
+{{ def client "This is a client" }}
 {{ page title client }}

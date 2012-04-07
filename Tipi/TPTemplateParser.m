@@ -50,55 +50,54 @@
 	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
 	
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) { return @""; } copy]
-				forKey:@"bind"];
+					forKey:@"bind"];
 	
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
-		NSString *key = [[node.values objectAtIndex:0] lowercaseString];
-		NSMutableDictionary *freshEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
-		
-		[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *environment, NSArray *parameters ) {
-			NSMutableString *expansion = [NSMutableString string];
-			NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:freshEnvironment];
+		if( [node.childNodes count] > 0 ) {
+			NSString *key = [[node.values objectAtIndex:0] lowercaseString];
+			NSMutableDictionary *freshEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
 			
-			NSMutableString *thisExpansion = [NSMutableString string];
-			for( TPTemplateNode *childNode in currentNode.childNodes ) {
-				[thisExpansion appendString:[childNode expansionUsingEnvironment:freshEnvironment]];
-			}
-			[invokeEnvironment setObject:thisExpansion forKey:@"this"];
-			
-			[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-				[invokeEnvironment setObject:[parameters objectAtIndex:idx] forKey:[obj lowercaseString]];
-			}];
-			
-			for( TPTemplateNode *bindNode in currentNode.childNodes ) {
-				if( [bindNode.name isEqualToString:@"bind"] ) {
-					[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
-						[invokeEnvironment setObject:[obj expansionUsingEnvironment:freshEnvironment]
-											  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
-					}];
+			[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *environment, NSArray *parameters ) {
+				NSMutableString *expansion = [NSMutableString string];
+				NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:freshEnvironment];
+				
+				NSMutableString *thisExpansion = [NSMutableString string];
+				for( TPTemplateNode *childNode in currentNode.childNodes ) {
+					[thisExpansion appendString:[childNode expansionUsingEnvironment:freshEnvironment]];
 				}
-			}
+				[invokeEnvironment setObject:thisExpansion forKey:@"this"];
+				
+				[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+					[invokeEnvironment setObject:[parameters objectAtIndex:idx] forKey:[obj lowercaseString]];
+				}];
+				
+				for( TPTemplateNode *bindNode in currentNode.childNodes ) {
+					if( [bindNode.name isEqualToString:@"bind"] ) {
+						[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
+							[invokeEnvironment setObject:[obj expansionUsingEnvironment:freshEnvironment]
+												  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+						}];
+					}
+				}
+				
+				for( TPTemplateNode *childNode in node.childNodes ) {
+					[expansion appendString:[childNode expansionUsingEnvironment:invokeEnvironment]];
+				}
+				
+				return expansion;
+			} copy] forKey:key];
+		}
+		else {
+			[environment setObject:[^NSString*( TPTemplateNode *_node, NSMutableDictionary *environment, NSArray *parameters ) {
+				return [node.values objectAtIndex:1];
+			} copy] forKey:[[node.values objectAtIndex:0] lowercaseString]];
 			
-			for( TPTemplateNode *childNode in node.childNodes ) {
-				[expansion appendString:[childNode expansionUsingEnvironment:invokeEnvironment]];
-			}
-			
-			return expansion;
-		} copy] forKey:key];
-
+			NSLog(@"Environment: %@", environment);
+		}
+		
 		return @"";
 	} copy] forKey:@"def"];
-
-	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
-		[environment setObject:[^NSString*( TPTemplateNode *_node, NSMutableDictionary *environment, NSArray *parameters ) {
-			return [node.values objectAtIndex:1];
-		} copy] forKey:[[node.values objectAtIndex:0] lowercaseString]];
-		
-		NSLog(@"Environment: %@", environment);
-		
-		return @"";
-	} copy] forKey:@"env"];
-
+	
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
 		NSMutableString *expansion = [NSMutableString string];
 		TPMarkdownDataParser *parser = [TPMarkdownDataParser parserForFile:[node.values objectAtIndex:0]];
@@ -240,7 +239,7 @@
 				if( [content characterAtIndex:0] == '\n' ) {
 					[content deleteCharactersInRange:NSMakeRange(0, 1)];
 				}
-
+				
 				return YES;
 			}
 			else {
