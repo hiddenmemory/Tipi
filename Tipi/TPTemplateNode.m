@@ -7,7 +7,7 @@
 //
 
 #import "TPTemplateNode.h"
-#import "NSString+HiddenMemory.h"
+#import "NSString+Tipi.h"
 
 @implementation TPTemplateNode
 @synthesize type, originalValue, name, values, childNodes;

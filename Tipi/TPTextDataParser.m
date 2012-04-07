@@ -7,7 +7,7 @@
 //
 
 #import "TPTextDataParser.h"
-#import "NSString+HiddenMemory.h"
+#import "NSString+Tipi.h"
 
 @interface TPTextDataParser () {
 	NSMutableDictionary *_values;

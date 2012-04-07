@@ -1,6 +1,6 @@
 //
-//  NSString+HiddenMemory.h
-// hiddenMemory Core Library
+//  NSString+Tipi.h
+//  Tipi Core Library
 //
 //  Created by Chris Ross on 03/06/2010.
 //  Copyright 2010 hiddenMemory Ltd. All rights reserved.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (HiddenMemory)
+@interface NSString (Tipi)
 
 + (NSString*)bytesToHuman:(size_t)value;
 

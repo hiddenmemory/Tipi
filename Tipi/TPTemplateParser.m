@@ -8,8 +8,10 @@
 
 #import "TPTemplateParser.h"
 #import "TPTemplateNode.h"
-#import "NSString+HiddenMemory.h"
 #import "TPMarkdownDataParser.h"
+
+#import "NSString+Tipi.h"
+#import "NSArray+Tipi.h"
 
 @interface TPTemplateParser () {
 	TPTemplateNode *root;
@@ -54,23 +56,23 @@
 	
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
 		if( [node.childNodes count] > 0 ) {
+			// If there is one or more child nodes, we assume that this is an expansion block
 			NSString *key = [[node.values objectAtIndex:0] lowercaseString];
 			NSMutableDictionary *freshEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
 			
 			[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *environment, NSArray *parameters ) {
-				NSMutableString *expansion = [NSMutableString string];
 				NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:freshEnvironment];
+
+				// Capture {{this}}
+				[invokeEnvironment setObject:[currentNode.childNodes tp_templateNodesExpandedUsingEnvironment:freshEnvironment]
+									  forKey:@"this"];
 				
-				NSMutableString *thisExpansion = [NSMutableString string];
-				for( TPTemplateNode *childNode in currentNode.childNodes ) {
-					[thisExpansion appendString:[childNode expansionUsingEnvironment:freshEnvironment]];
-				}
-				[invokeEnvironment setObject:thisExpansion forKey:@"this"];
-				
+				// Capture each parameter: this maps the {{def NAME PARAM1}} -> value provided in parameters
 				[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 					[invokeEnvironment setObject:[parameters objectAtIndex:idx] forKey:[obj lowercaseString]];
 				}];
 				
+				// This walks the node on which the def is being invoked to see if there are any bind commands
 				for( TPTemplateNode *bindNode in currentNode.childNodes ) {
 					if( [bindNode.name isEqualToString:@"bind"] ) {
 						[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
@@ -80,37 +82,19 @@
 					}
 				}
 				
-				for( TPTemplateNode *childNode in node.childNodes ) {
-					[expansion appendString:[childNode expansionUsingEnvironment:invokeEnvironment]];
-				}
-				
-				return expansion;
+				// Expand and return the result
+				return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
 			} copy] forKey:key];
 		}
 		else {
-			[environment setObject:[^NSString*( TPTemplateNode *_node, NSMutableDictionary *environment, NSArray *parameters ) {
-				return [node.values objectAtIndex:1];
-			} copy] forKey:[[node.values objectAtIndex:0] lowercaseString]];
-			
+			/// If there are no child nodes, we set a value in the environment
+			[environment setObject:[node.values objectAtIndex:1] forKey:[[node.values objectAtIndex:0] lowercaseString]];
+
 			NSLog(@"Environment: %@", environment);
 		}
 		
 		return @"";
 	} copy] forKey:@"def"];
-	
-	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
-		NSMutableString *expansion = [NSMutableString string];
-		TPMarkdownDataParser *parser = [TPMarkdownDataParser parserForFile:[node.values objectAtIndex:0]];
-		
-		NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
-		[invokeEnvironment addEntriesFromDictionary:parser.values];
-		
-		for( TPTemplateNode *childNode in node.childNodes ) {
-			[expansion appendString:[childNode expansionUsingEnvironment:invokeEnvironment]];
-		}
-		
-		return expansion;
-	} copy] forKey:@"include"];
 	
 	return [[root expansionUsingEnvironment:environment] stringByTrimmingWhitespace];
 }
@@ -154,41 +138,29 @@
 			while( [stringToParse length] ) {
 				stringToParse = [stringToParse stringByTrimmingWhitespace];
 				
-				if( [stringToParse hasPrefix:@"\""] ) {
+				if( [stringToParse hasPrefix:@"\""] || [stringToParse hasPrefix:@"'"] ) {
+					// If we match a comment character, match until the next non-escaped version, otherwise until end of the string
+					unichar matchCharacter = [stringToParse characterAtIndex:0];
 					BOOL success = NO;
-					NSUInteger i = 0; 
-					for( i = 1; i < [stringToParse length]; i++ ) {
+
+					for( NSUInteger i = 1; i < [stringToParse length]; i++ ) {
 						unichar c = [stringToParse characterAtIndex:i];
-						if( c == '"' && [stringToParse characterAtIndex:i - 1] != '\\' ) {
+						if( c == matchCharacter && [stringToParse characterAtIndex:i - 1] != '\\' ) {
 							[parts addObject:[stringToParse substringWithRange:NSMakeRange(1, i - 1)]];
 							stringToParse = [stringToParse substringFromIndex:i + 1];
 							success = YES;
 							break;
 						}
 					}
+					
 					if( success == NO ) {
-						[parts addObject:stringToParse];
-						stringToParse = @"";
-					}
-				}
-				else if( [stringToParse hasPrefix:@"'"] ) {
-					BOOL success = NO;
-					NSUInteger i = 0; 
-					for( i = 1; i < [stringToParse length]; i++ ) {
-						unichar c = [stringToParse characterAtIndex:i];
-						if( c == '\'' && [stringToParse characterAtIndex:i - 1] != '\\' ) {
-							[parts addObject:[stringToParse substringWithRange:NSMakeRange(1, i - 1)]];
-							stringToParse = [stringToParse substringFromIndex:i + 1];
-							success = YES;
-							break;
-						}
-					}
-					if( success == NO ) {
+						// If we don't find the terminating character, we chomp till the end of the string
 						[parts addObject:stringToParse];
 						stringToParse = @"";
 					}
 				}
 				else {
+					// Chomp until the next space
 					NSRange range = [stringToParse rangeOfString:@" "];
 					NSString *nextToken = (range.location == NSNotFound ? stringToParse : [stringToParse substringToIndex:range.location]);
 					
@@ -198,6 +170,7 @@
 						stringToParse = [stringToParse substringFromIndex:[nextToken length]];
 					}
 					else {
+						// We hit the end of the string
 						break;
 					}
 				}

@@ -10,9 +10,9 @@
 		838CA66E152DB08F0013C064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA66D152DB08F0013C064 /* Foundation.framework */; };
 		838CA671152DB08F0013C064 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA670152DB08F0013C064 /* main.m */; };
 		838CA675152DB08F0013C064 /* Tipi.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838CA674152DB08F0013C064 /* Tipi.1 */; };
-		838CA67E152DB0DA0013C064 /* TPInputParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPInputParser.m */; };
+		838CA67E152DB0DA0013C064 /* TPDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPDataParser.m */; };
 		838CA681152DB11E0013C064 /* TPTextDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA680152DB11E0013C064 /* TPTextDataParser.m */; };
-		838CA689152DB55C0013C064 /* NSString+HiddenMemory.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+HiddenMemory.m */; };
+		838CA689152DB55C0013C064 /* NSString+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+Tipi.m */; };
 		838CA68C152DB59F0013C064 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA68B152DB59F0013C064 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		838CA68E152DB6920013C064 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA68D152DB6920013C064 /* libicucore.dylib */; };
 		838CA691152DB7BB0013C064 /* TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */; };
@@ -39,6 +39,7 @@
 		838CA720152DB8A10013C064 /* mkdioWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA703152DB8A10013C064 /* mkdioWrapper.c */; };
 		838CA726152DBEEB0013C064 /* TPTemplateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA725152DBEEB0013C064 /* TPTemplateParser.m */; };
 		838CA729152DC02D0013C064 /* TPTemplateNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA728152DC02D0013C064 /* TPTemplateNode.m */; };
+		83DC137015305157005FCB72 /* NSArray+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC136F15305157005FCB72 /* NSArray+Tipi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,12 +62,12 @@
 		838CA673152DB08F0013C064 /* Tipi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tipi-Prefix.pch"; sourceTree = "<group>"; };
 		838CA674152DB08F0013C064 /* Tipi.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Tipi.1; sourceTree = "<group>"; };
 		838CA67C152DB0DA0013C064 /* TPDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPDataParser.h; sourceTree = "<group>"; };
-		838CA67D152DB0DA0013C064 /* TPInputParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPInputParser.m; sourceTree = "<group>"; };
+		838CA67D152DB0DA0013C064 /* TPDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPDataParser.m; sourceTree = "<group>"; };
 		838CA67F152DB11E0013C064 /* TPTextDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTextDataParser.h; sourceTree = "<group>"; };
 		838CA680152DB11E0013C064 /* TPTextDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTextDataParser.m; sourceTree = "<group>"; };
 		838CA683152DB39F0013C064 /* Test01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.txt; sourceTree = "<group>"; };
-		838CA687152DB55C0013C064 /* NSString+HiddenMemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HiddenMemory.h"; sourceTree = "<group>"; };
-		838CA688152DB55C0013C064 /* NSString+HiddenMemory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HiddenMemory.m"; sourceTree = "<group>"; };
+		838CA687152DB55C0013C064 /* NSString+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSString+Tipi.h"; sourceTree = "<group>"; };
+		838CA688152DB55C0013C064 /* NSString+Tipi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tipi.m"; sourceTree = "<group>"; };
 		838CA68A152DB59F0013C064 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		838CA68B152DB59F0013C064 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		838CA68D152DB6920013C064 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -110,6 +111,9 @@
 		838CA728152DC02D0013C064 /* TPTemplateNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTemplateNode.m; sourceTree = "<group>"; };
 		83C656BC152DD61500454E32 /* Test02.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Test02.html; sourceTree = "<group>"; };
 		83C656BE152DFFA200454E32 /* Test03.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Test03.html; sourceTree = "<group>"; };
+		83DC136C153050D8005FCB72 /* Tipi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tipi.h; sourceTree = "<group>"; };
+		83DC136E15305157005FCB72 /* NSArray+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Tipi.h"; sourceTree = "<group>"; };
+		83DC136F15305157005FCB72 /* NSArray+Tipi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Tipi.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			children = (
 				838CA722152DBA560013C064 /* Helpers */,
 				838CA721152DBA4B0013C064 /* Parsers */,
+				83DC136C153050D8005FCB72 /* Tipi.h */,
 			);
 			name = Tipi;
 			sourceTree = "<group>";
@@ -257,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				838CA67C152DB0DA0013C064 /* TPDataParser.h */,
-				838CA67D152DB0DA0013C064 /* TPInputParser.m */,
+				838CA67D152DB0DA0013C064 /* TPDataParser.m */,
 				838CA67F152DB11E0013C064 /* TPTextDataParser.h */,
 				838CA680152DB11E0013C064 /* TPTextDataParser.m */,
 				838CA68F152DB7BA0013C064 /* TPMarkdownDataParser.h */,
@@ -276,8 +281,10 @@
 				838CA692152DB8A00013C064 /* Discount */,
 				838CA68A152DB59F0013C064 /* RegexKitLite.h */,
 				838CA68B152DB59F0013C064 /* RegexKitLite.m */,
-				838CA687152DB55C0013C064 /* NSString+HiddenMemory.h */,
-				838CA688152DB55C0013C064 /* NSString+HiddenMemory.m */,
+				838CA687152DB55C0013C064 /* NSString+Tipi.h */,
+				838CA688152DB55C0013C064 /* NSString+Tipi.m */,
+				83DC136E15305157005FCB72 /* NSArray+Tipi.h */,
+				83DC136F15305157005FCB72 /* NSArray+Tipi.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -334,9 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				838CA671152DB08F0013C064 /* main.m in Sources */,
-				838CA67E152DB0DA0013C064 /* TPInputParser.m in Sources */,
+				838CA67E152DB0DA0013C064 /* TPDataParser.m in Sources */,
 				838CA681152DB11E0013C064 /* TPTextDataParser.m in Sources */,
-				838CA689152DB55C0013C064 /* NSString+HiddenMemory.m in Sources */,
+				838CA689152DB55C0013C064 /* NSString+Tipi.m in Sources */,
 				838CA68C152DB59F0013C064 /* RegexKitLite.m in Sources */,
 				838CA691152DB7BB0013C064 /* TPMarkdownDataParser.m in Sources */,
 				838CA705152DB8A10013C064 /* amalloc.c in Sources */,
@@ -362,6 +369,7 @@
 				838CA720152DB8A10013C064 /* mkdioWrapper.c in Sources */,
 				838CA726152DBEEB0013C064 /* TPTemplateParser.m in Sources */,
 				838CA729152DC02D0013C064 /* TPTemplateNode.m in Sources */,
+				83DC137015305157005FCB72 /* NSArray+Tipi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

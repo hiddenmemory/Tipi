@@ -1,12 +1,12 @@
 //
-//  NSString+HiddenMemory.m
-// hiddenMemory Core Library
+//  NSString+Tipi.m
+//  Tipi Core Library
 //
 //  Created by Chris Ross on 03/06/2010.
 //  Copyright 2010 hiddenMemory Ltd. All rights reserved.
 //
 
-#import "NSString+HiddenMemory.h"
+#import "NSString+Tipi.h"
 #import "RegexKitLite.h"
 
 @implementation NSString (HiddenMemory)

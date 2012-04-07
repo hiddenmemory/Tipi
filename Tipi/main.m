@@ -8,13 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TPDataParser.h"
-#import "TPMarkdownDataParser.h"
-#import "TPTemplateParser.h"
+#import "Tipi.h"
 
 int main(int argc, const char * argv[]) {
 
 	@autoreleasepool {
+		NSMutableDictionary *environment = [NSMutableDictionary dictionary];
+		
+		[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
+			TPMarkdownDataParser *parser = [TPMarkdownDataParser parserForFile:[node.values objectAtIndex:0]];
+			
+			// Duplicate the environment for implementing the child nodes
+			NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
+			
+			// Add the key-values from the data file
+			[invokeEnvironment addEntriesFromDictionary:parser.values];
+			
+			return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
+		} copy] forKey:@"include"];
+		
 		TPDataParser *p = [TPMarkdownDataParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test01.txt"];
 		NSLog(@"p.values = %@", [p values]);
 		
