@@ -223,13 +223,15 @@
 			while( [stringToParse length] ) {
 				NSString *token = [self nextToken:stringToParse];
 
-				if( [token length] ) {
-					switch( currentState ) {
-						case STATE_WAITING_FOR_NAME:
+				switch( currentState ) {
+					case STATE_WAITING_FOR_NAME:
+						if( [token length] ) {
 							attributeName = token;
 							currentState = STATE_WAITING_FOR_EQUALS;
-							break;
-						case STATE_WAITING_FOR_EQUALS:
+						}
+						break;
+					case STATE_WAITING_FOR_EQUALS:
+						if( [token length] ) {
 							if( [token isEqualToString:@"="] ) {
 								currentState = STATE_WAITING_FOR_VALUE;
 							}
@@ -240,16 +242,16 @@
 								attributeValue = @"";
 								currentState = STATE_WAITING_FOR_EQUALS;
 							}
-							break;
-						case STATE_WAITING_FOR_VALUE:
-							attributeValue = token;
-							[parts addObject:attributeName];
-							[baseEnvironment setObject:attributeValue forKey:attributeName];
-							attributeValue = @"";
-							attributeName = @"";
-							currentState = STATE_WAITING_FOR_NAME;
-							break;
-					}
+						}
+						break;
+					case STATE_WAITING_FOR_VALUE:
+						attributeValue = token;
+						[parts addObject:attributeName];
+						[baseEnvironment setObject:attributeValue forKey:attributeName];
+						attributeValue = @"";
+						attributeName = @"";
+						currentState = STATE_WAITING_FOR_NAME;
+						break;
 				}
 			}
 			
@@ -258,8 +260,8 @@
 				[baseEnvironment setObject:attributeValue forKey:attributeName];
 			}
 			
-//			NSLog(@"Parts: %@", parts);
-//			NSLog(@"Base Environment: %@", baseEnvironment);
+			NSLog(@"Parts: %@", parts);
+			NSLog(@"Base Environment: %@", baseEnvironment);
 			
 			[content deleteCharactersInRange:NSMakeRange(0, node.originalValue.length)];
 			
