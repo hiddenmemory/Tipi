@@ -20,6 +20,7 @@ typedef enum {
 @property (strong)   NSString *originalValue;
 @property (strong)   NSString *name;
 @property (readonly) NSMutableArray *values;
+@property (readonly) NSMutableDictionary *valuesMap;
 @property (readonly) NSMutableArray *childNodes;
 
 + (TPTemplateNode*)node;
