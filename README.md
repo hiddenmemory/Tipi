@@ -291,6 +291,8 @@ Tipi is a work in progress.
  - Create a schemes to generate static libraries that can be compiled into OS X and
    iOS projects.
 
+ - Clean up registering tag handlers.
+
 #Other Versions
 
  - Objective-C - <https://github.com/hiddenmemory/Tipi/> (this version)
