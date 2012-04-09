@@ -15,7 +15,7 @@ int main(int argc, const char * argv[]) {
 	@autoreleasepool {
 		NSMutableDictionary *environment = [NSMutableDictionary dictionary];
 		
-		[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
+		[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
 			TPMarkdownDataParser *parser = [TPMarkdownDataParser parserForFile:[node.values objectAtIndex:0]];
 			
 			// Duplicate the environment for implementing the child nodes

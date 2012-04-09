@@ -80,7 +80,7 @@
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
 		if( [node.values count] ) {
 			NSString *key = [[node.values objectAtIndex:0] lowercaseString];
-			if( !([key isEqualToString:@"bind"] || [key isEqualToString:@"def"] ) {
+			if( !([key isEqualToString:@"bind"] || [key isEqualToString:@"def"]) ) {
 				// Don't allow people to redfine bind or def.
 				if( [node.childNodes count] ) {
 					// If there is one or more child nodes, we assume that this is an expansion block
