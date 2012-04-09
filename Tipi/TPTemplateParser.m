@@ -13,8 +13,8 @@
 #import "NSString+Tipi.h"
 #import "NSArray+Tipi.h"
 
-#define ParserLog if( NO ) NSLog
-//#define ParserLog NSLog
+//#define ParserLog if( NO ) NSLog
+#define ParserLog NSLog
 
 @interface TPTemplateParser () {
 	TPTemplateNode *root;
@@ -86,6 +86,8 @@
 			[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *currentEnvironment ) {
 				NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:capturedEnvironment];
 
+				ParserLog(@"Processing node %@", currentNode.name);
+				
 				// Capture {{this}}
 				[invokeEnvironment setObject:[currentNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
 									  forKey:@"this"];
@@ -120,10 +122,8 @@
 				for( TPTemplateNode *bindNode in currentNode.childNodes ) {
 					if( [bindNode.name isEqualToString:@"bind"] && [node.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] ) {
 						if( [bindNode.childNodes count] ) {
-							[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
-								[invokeEnvironment setObject:[obj expansionUsingEnvironment:currentEnvironment]
-													  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
-							}];
+							[invokeEnvironment setObject:[bindNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
+												  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
 						}
 						else if( [bindNode.values count] > 0 ) {
 							[invokeEnvironment setObject:[self expandValue:[bindNode.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] 
@@ -137,7 +137,9 @@
 				ParserLog(@"Invoke environment: %@ (%@)", invokeEnvironment, currentNode);
 				
 				// Expand and return the result
-				return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
+				NSString *expansion = [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
+				ParserLog(@"Expansion for %@ = %@", currentNode.name, expansion);
+				return expansion;
 			} copy] forKey:key];
 		}
 		else {
