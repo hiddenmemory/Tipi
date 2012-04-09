@@ -56,7 +56,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		831A8D1D153329DF00E36646 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		831A8D1F153329DF00E36646 /* Test01.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.input; sourceTree = "<group>"; };
 		831A8D20153329DF00E36646 /* Test01.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.output; sourceTree = "<group>"; };
 		831A8D21153329DF00E36646 /* Test02.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.input; sourceTree = "<group>"; };
@@ -75,6 +74,8 @@
 		831A8D3015333F2B00E36646 /* Test02.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.input; sourceTree = "<group>"; };
 		831A8D321533422D00E36646 /* Test01.import */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.import; sourceTree = "<group>"; };
 		831A8D331533422D00E36646 /* Test02.import */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.import; sourceTree = "<group>"; };
+		831A8D341533475B00E36646 /* Test01.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.output; sourceTree = "<group>"; };
+		831A8D351533475B00E36646 /* Test02.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.output; sourceTree = "<group>"; };
 		838CA669152DB08F0013C064 /* Tipi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tipi; sourceTree = BUILT_PRODUCTS_DIR; };
 		838CA66D152DB08F0013C064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		838CA670152DB08F0013C064 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -147,10 +148,9 @@
 		831A8D1C153329DF00E36646 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				831A8D2D15333F2B00E36646 /* import */,
-				831A8D1D153329DF00E36646 /* .gitignore */,
-				831A8D1E153329DF00E36646 /* basic */,
 				831A8D2B153329DF00E36646 /* README.md */,
+				831A8D2D15333F2B00E36646 /* import */,
+				831A8D1E153329DF00E36646 /* basic */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -178,9 +178,11 @@
 			isa = PBXGroup;
 			children = (
 				831A8D321533422D00E36646 /* Test01.import */,
-				831A8D331533422D00E36646 /* Test02.import */,
 				831A8D2E15333F2B00E36646 /* Test01.input */,
+				831A8D341533475B00E36646 /* Test01.output */,
+				831A8D331533422D00E36646 /* Test02.import */,
 				831A8D3015333F2B00E36646 /* Test02.input */,
+				831A8D351533475B00E36646 /* Test02.output */,
 			);
 			path = import;
 			sourceTree = "<group>";

@@ -106,6 +106,12 @@ The two forms are semantically similar. Think of them as function definitions in
     	return name + " has a web site at " + url;
     }
 
+If you don't wish to povide a default value for the argument you can leave the value out. Tipi will evaluate the argument to an empty string (if not provide at call).
+
+	{{#def food}}
+		{{food}}
+	{{/def}}
+
 *Note: Tipi is case-insensitive.*
 
 ## Invoking templates
@@ -308,6 +314,13 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
+
+# Acknowledgements
+
+This product includes software developed by:
+
+ - David Loren Parsons <http://www.pell.portland.or.us/~orc>
+ - Jonathan 'Wolf' Rentzsch <https://github.com/rentzsch/markdownlive>
 
 [Dave Gurnell]: http://boxandarrow.com
 [Chris Ross]: http://darkrock.co.uk
