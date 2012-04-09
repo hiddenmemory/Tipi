@@ -120,7 +120,7 @@ Once you have defined a template using `def`, you can *invoke* it by writing its
 
     {{ food }} // ==> "Lasagne"
 
-    {{ person name="Chris" url="darkrock.co.uk" }} // ==> "Chris has a web site at darkrock.co.uk"
+    {{ person name="Chris" url="hiddenmemory.co.uk" }} // ==> "Chris has a web site at hiddenmemory.co.uk"
 
 ## Passing blocks using `this`
 
