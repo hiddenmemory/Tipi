@@ -73,7 +73,11 @@
 	return value;
 }
 - (NSString*)expansionUsingEnvironment:(NSDictionary*)values {
-	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
+	NSMutableDictionary *environment = [NSMutableDictionary dictionary];
+	
+	for( NSString *key in [values allKeys] ) {
+		[environment setObject:[values objectForKey:key] forKey:[key lowercaseString]];
+	}
 	
 	[environment setObject:@"" forKey:@"bind"];
 	
@@ -178,6 +182,9 @@
 	} copy] forKey:@"def"];
 	
 	return [root expansionUsingEnvironment:environment];
+}
+- (NSString*)expansion {
+	return [self expansionUsingEnvironment:[NSDictionary dictionary]];
 }
 - (void)parseContent:(NSMutableString*)content parent:(TPTemplateNode*)parent {
 	while( [content length] ) {
