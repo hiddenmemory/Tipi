@@ -31,7 +31,7 @@ int main(int argc, const char * argv[]) {
 		NSLog(@"p.values = %@", [p values]);
 		
 		TPTemplateParser *q = [TPTemplateParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test03.html"];
-		NSLog(@"Expansion: %@", [q expansionUsingEnvironment:p.values]);
+		NSLog(@"Expansion:\nSTART:\n%@:END", [q expansionUsingEnvironment:p.values]);
 	}
     return 0;
 }

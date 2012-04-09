@@ -51,36 +51,62 @@
 - (NSString*)expansionUsingEnvironment:(NSDictionary*)values {
 	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
 	
-	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) { return @""; } copy]
-					forKey:@"bind"];
+	[environment setObject:@"" forKey:@"bind"];
 	
-	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment, NSArray *parameters ) {
+	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
 		if( [node.childNodes count] > 0 ) {
 			// If there is one or more child nodes, we assume that this is an expansion block
 			NSString *key = [[node.values objectAtIndex:0] lowercaseString];
-			NSMutableDictionary *freshEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
+			NSMutableDictionary *capturedEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
 			
-			[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *environment, NSArray *parameters ) {
-				NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:freshEnvironment];
+			[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *currentEnvironment ) {
+				NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:capturedEnvironment];
 
 				// Capture {{this}}
-				[invokeEnvironment setObject:[currentNode.childNodes tp_templateNodesExpandedUsingEnvironment:freshEnvironment]
+				[invokeEnvironment setObject:[currentNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
 									  forKey:@"this"];
 				
 				// Capture each parameter: this maps the {{def NAME PARAM1}} -> value provided in parameters
 				[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-					[invokeEnvironment setObject:[parameters objectAtIndex:idx] forKey:[obj lowercaseString]];
+					NSString *key = [obj lowercaseString];
+					id value = nil;
+					
+					if( [currentNode.valuesMap objectForKey:key] ) {
+						value = [currentNode.valuesMap objectForKey:key];
+					}
+					else if( [node.valuesMap objectForKey:key] ) {
+						value = [node.valuesMap objectForKey:key];
+					}
+					else {
+						value = key;
+					}
+					
+					if( [[value class] isSubclassOfClass:[NSString class]] ) {
+						value = [currentEnvironment objectForKey:value];
+					}
+					else {
+						NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global ) = value;
+						value = expansionBlock(currentNode, environment);
+					}
+					
+					if( value == nil ) {
+						value = @"";
+					}
+
+					[invokeEnvironment setObject:value forKey:key];
 				}];
 				
 				// This walks the node on which the def is being invoked to see if there are any bind commands
 				for( TPTemplateNode *bindNode in currentNode.childNodes ) {
 					if( [bindNode.name isEqualToString:@"bind"] ) {
 						[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
-							[invokeEnvironment setObject:[obj expansionUsingEnvironment:freshEnvironment]
+							[invokeEnvironment setObject:[obj expansionUsingEnvironment:currentEnvironment]
 												  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
 						}];
 					}
 				}
+				
+				NSLog(@"Invoke environment: %@", invokeEnvironment);
 				
 				// Expand and return the result
 				return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
@@ -96,7 +122,7 @@
 		return @"";
 	} copy] forKey:@"def"];
 	
-	return [[root expansionUsingEnvironment:environment] stringByTrimmingWhitespace];
+	return [root expansionUsingEnvironment:environment];
 }
 - (void)parseContent:(NSMutableString*)content parent:(TPTemplateNode*)parent {
 	while( [content length] ) {
@@ -124,6 +150,55 @@
 		}
 	}
 }
+
+- (NSString*)nextToken:(NSMutableString*)stream {
+	NSString *nextToken = @"";
+	
+	NSString *stringToParse = [stream stringByTrimmingWhitespace];
+	
+	if( [stringToParse hasPrefix:@"\""] || [stringToParse hasPrefix:@"'"] ) {
+		// If we match a comment character, match until the next non-escaped version, otherwise until end of the string
+		unichar matchCharacter = [stringToParse characterAtIndex:0];
+		BOOL success = NO;
+		
+		for( NSUInteger i = 1; i < [stringToParse length]; i++ ) {
+			unichar c = [stringToParse characterAtIndex:i];
+			if( c == matchCharacter && [stringToParse characterAtIndex:i - 1] != '\\' ) {
+				nextToken = [stringToParse substringWithRange:NSMakeRange(1, i - 1)];
+				stringToParse = [stringToParse substringFromIndex:i + 1];
+				success = YES;
+				break;
+			}
+		}
+		
+		if( success == NO ) {
+			nextToken = stringToParse;
+			stringToParse = @"";
+		}
+	}
+	else if( [stringToParse hasPrefix:@"="] ) {
+		stringToParse = [stringToParse substringFromIndex:1];
+		nextToken = @"=";
+	}
+	else {
+		// Chomp until the next space
+		NSRange range = [stringToParse rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@" \t="]];
+		
+		nextToken = (range.location == NSNotFound ? stringToParse : [stringToParse substringToIndex:range.location]);
+		
+		if( range.location != NSNotFound ) {
+			stringToParse = [stringToParse substringFromIndex:[nextToken length]];
+		}
+		else {
+			stringToParse = @"";
+		}
+	}
+	
+	[stream setString:stringToParse];
+	
+	return nextToken;
+}
+
 - (BOOL)parseTag:(NSMutableString*)content parent:(TPTemplateNode*)parent {
 	if( [content hasPrefix:tagStart] ) {
 		NSRange tagContentRange = [content rangeOfString:tagEnd];
@@ -133,48 +208,58 @@
 			node.originalValue = [content substringToIndex:tagContentRange.location + tagEnd.length];
 			
 			NSMutableArray *parts = [NSMutableArray array];
-			NSString *stringToParse = [node.originalValue removePrefix:tagStart suffix:tagEnd];
+			NSMutableString *stringToParse = [NSMutableString stringWithString:[node.originalValue removePrefix:tagStart suffix:tagEnd]];
+
+#define STATE_WAITING_FOR_NAME   0
+#define STATE_WAITING_FOR_EQUALS 1
+#define STATE_WAITING_FOR_VALUE  2
+
+			NSMutableDictionary *baseEnvironment = [NSMutableDictionary dictionary];
+			
+			NSString *attributeName = @"";
+			NSString *attributeValue = @"";
+			int       currentState = STATE_WAITING_FOR_NAME;
 			
 			while( [stringToParse length] ) {
-				stringToParse = [stringToParse stringByTrimmingWhitespace];
-				
-				if( [stringToParse hasPrefix:@"\""] || [stringToParse hasPrefix:@"'"] ) {
-					// If we match a comment character, match until the next non-escaped version, otherwise until end of the string
-					unichar matchCharacter = [stringToParse characterAtIndex:0];
-					BOOL success = NO;
+				NSString *token = [self nextToken:stringToParse];
 
-					for( NSUInteger i = 1; i < [stringToParse length]; i++ ) {
-						unichar c = [stringToParse characterAtIndex:i];
-						if( c == matchCharacter && [stringToParse characterAtIndex:i - 1] != '\\' ) {
-							[parts addObject:[stringToParse substringWithRange:NSMakeRange(1, i - 1)]];
-							stringToParse = [stringToParse substringFromIndex:i + 1];
-							success = YES;
+				if( [token length] ) {
+					switch( currentState ) {
+						case STATE_WAITING_FOR_NAME:
+							attributeName = token;
+							currentState = STATE_WAITING_FOR_EQUALS;
 							break;
-						}
-					}
-					
-					if( success == NO ) {
-						// If we don't find the terminating character, we chomp till the end of the string
-						[parts addObject:stringToParse];
-						stringToParse = @"";
-					}
-				}
-				else {
-					// Chomp until the next space
-					NSRange range = [stringToParse rangeOfString:@" "];
-					NSString *nextToken = (range.location == NSNotFound ? stringToParse : [stringToParse substringToIndex:range.location]);
-					
-					[parts addObject:nextToken];
-					
-					if( range.location != NSNotFound ) {
-						stringToParse = [stringToParse substringFromIndex:[nextToken length]];
-					}
-					else {
-						// We hit the end of the string
-						break;
+						case STATE_WAITING_FOR_EQUALS:
+							if( [token isEqualToString:@"="] ) {
+								currentState = STATE_WAITING_FOR_VALUE;
+							}
+							else {
+								[parts addObject:attributeName];
+								[baseEnvironment setObject:@"" forKey:attributeName];
+								attributeName = token;
+								attributeValue = @"";
+								currentState = STATE_WAITING_FOR_EQUALS;
+							}
+							break;
+						case STATE_WAITING_FOR_VALUE:
+							attributeValue = token;
+							[parts addObject:attributeName];
+							[baseEnvironment setObject:attributeValue forKey:attributeName];
+							attributeValue = @"";
+							attributeName = @"";
+							currentState = STATE_WAITING_FOR_NAME;
+							break;
 					}
 				}
 			}
+			
+			if( [attributeName length] ) {
+				[parts addObject:attributeName];
+				[baseEnvironment setObject:attributeValue forKey:attributeName];
+			}
+			
+//			NSLog(@"Parts: %@", parts);
+//			NSLog(@"Base Environment: %@", baseEnvironment);
 			
 			[content deleteCharactersInRange:NSMakeRange(0, node.originalValue.length)];
 			
@@ -191,6 +276,10 @@
 				
 				if( [parts count] > 1 ) {
 					[node.values addObjectsFromArray:[parts subarrayWithRange:NSMakeRange(1, [parts count] - 1)]];
+					
+					for( NSString *key in node.values ) {
+						[node.valuesMap setObject:[baseEnvironment objectForKey:key] forKey:key];
+					}
 				}
 				
 				[parent.childNodes addObject:node];
@@ -202,13 +291,6 @@
 				[self parseContent:content parent:node];
 			}
 			else if( [[parts objectAtIndex:0] hasPrefix:tagBlockClose] ) {
-				if( [[parts objectAtIndex:0] isEqualToString:tagBlockClose] ) {
-					[parts removeObjectAtIndex:0];
-				}
-				else {
-					[parts replaceObjectAtIndex:0 withObject:[[parts objectAtIndex:0] removePrefix:tagBlockClose suffix:nil]];
-				}
-				
 				if( [content characterAtIndex:0] == '\n' ) {
 					[content deleteCharactersInRange:NSMakeRange(0, 1)];
 				}
@@ -218,10 +300,15 @@
 			else {
 				node.type = TPNodeApplication;
 				node.name = [parts objectAtIndex:0];
+				
 				if( [parts count] > 1 ) {
 					[node.values addObjectsFromArray:[parts subarrayWithRange:NSMakeRange(1, [parts count] - 1)]];
 				}
-				
+
+				for( NSString *key in node.values ) {
+					[node.valuesMap setObject:[baseEnvironment objectForKey:key] forKey:key];
+				}
+
 				[parent.childNodes addObject:node];
 			}
 		}

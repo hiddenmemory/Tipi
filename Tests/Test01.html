@@ -1,13 +1,13 @@
-{{# def page title_test client_test }}
+{{# def page title client }}
 <html>
 	<head>
-        <title>{{ title_test }}</title>
+        <title>{{ title }}</title>
         <meta name="author" value="{{ author }}">
 	</head>
-	<body>{{ client_test }}</body>
+	<body>{{ client }}</body>
 </html>
 {{/ def }}
 
 {{ def title "This is a title" }}
 {{ def client "This is a client" }}
-{{ page title client }}
+{{ page title=title client=client }}

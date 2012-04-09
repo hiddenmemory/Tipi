@@ -10,7 +10,7 @@
 #import "NSString+Tipi.h"
 
 @implementation TPTemplateNode
-@synthesize type, originalValue, name, values, childNodes;
+@synthesize type, originalValue, name, values, valuesMap, childNodes;
 
 + (TPTemplateNode*)node{
 	return [[TPTemplateNode alloc] init];
@@ -22,6 +22,7 @@
 		self.originalValue = @"";
 		self.name = @"";
 		values = [NSMutableArray array];
+		valuesMap = [NSMutableDictionary dictionary];
 		childNodes = [NSMutableArray array];
 	}
 	return self;
@@ -66,27 +67,8 @@
 				[expansion appendString:value];
 			}
 			else {
-				NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global, NSArray *parameters ) = value;
-				
-				NSMutableArray *parameters = [NSMutableArray array];
-				
-				for( NSString *_valueName in self.values ) {
-					NSString *valueName = [_valueName lowercaseString];
-					id valueValue = [environment objectForKey:valueName];
-					
-					if( valueValue == nil ) {
-						[parameters addObject:_valueName];
-					}
-					else if( [[valueValue class] isSubclassOfClass:[NSString class]] ) {
-						[parameters addObject:valueValue];
-					}
-					else {
-						NSString *(^valueExpansionBlock)( TPTemplateNode *node, NSMutableDictionary *global, NSArray *parameters ) = valueValue;
-						[parameters addObject:valueExpansionBlock(self, environment, nil)];
-					}
-				}
-				
-				[expansion appendString:expansionBlock(self, environment, parameters)];
+				NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global ) = value;
+				[expansion appendString:expansionBlock(self, environment)];
 			}
 		}
 		else {

@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		831A8D0F1532F39F00E36646 /* Test04.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Test04.html; sourceTree = "<group>"; };
 		838CA669152DB08F0013C064 /* Tipi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tipi; sourceTree = BUILT_PRODUCTS_DIR; };
 		838CA66D152DB08F0013C064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		838CA670152DB08F0013C064 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,7 +67,7 @@
 		838CA67F152DB11E0013C064 /* TPTextDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTextDataParser.h; sourceTree = "<group>"; };
 		838CA680152DB11E0013C064 /* TPTextDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTextDataParser.m; sourceTree = "<group>"; };
 		838CA683152DB39F0013C064 /* Test01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.txt; sourceTree = "<group>"; };
-		838CA687152DB55C0013C064 /* NSString+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "NSString+Tipi.h"; sourceTree = "<group>"; };
+		838CA687152DB55C0013C064 /* NSString+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tipi.h"; sourceTree = "<group>"; };
 		838CA688152DB55C0013C064 /* NSString+Tipi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tipi.m"; sourceTree = "<group>"; };
 		838CA68A152DB59F0013C064 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		838CA68B152DB59F0013C064 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 				838CA723152DBE250013C064 /* Test01.html */,
 				83C656BC152DD61500454E32 /* Test02.html */,
 				83C656BE152DFFA200454E32 /* Test03.html */,
+				831A8D0F1532F39F00E36646 /* Test04.html */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
