@@ -285,6 +285,11 @@ After expansion, Tipi *renders* the final DOM tree by removing any remaining tag
 
 Tipi is a work in progress.
 
+#Other Versions
+
+ - Objective-C - <https://github.com/hiddenmemory/Tipi/>
+ - Scala - <https://github.com/davegurnell/tipi/>
+
 # Licence
 
 Copyright 2011-12 [Dave Gurnell] and [hiddenMemory]
@@ -319,8 +324,9 @@ POSSIBILITY OF SUCH DAMAGE.
 
 This product includes software developed by:
 
- - David Loren Parsons <http://www.pell.portland.or.us/~orc>
- - Jonathan 'Wolf' Rentzsch <https://github.com/rentzsch/markdownlive>
+ - David Loren Parsons - <http://www.pell.portland.or.us/~orc>
+ - Jonathan 'Wolf' Rentzsch - <https://github.com/rentzsch/markdownlive>
+
 
 [Dave Gurnell]: http://boxandarrow.com
 [Chris Ross]: http://darkrock.co.uk
