@@ -78,78 +78,81 @@
 	[environment setObject:@"" forKey:@"bind"];
 	
 	[environment setObject:[^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
-		if( [node.childNodes count] > 0 ) {
-			// If there is one or more child nodes, we assume that this is an expansion block
+		if( [node.values count] ) {
 			NSString *key = [[node.values objectAtIndex:0] lowercaseString];
-			NSMutableDictionary *capturedEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
-			
-			[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *currentEnvironment ) {
-				NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:capturedEnvironment];
-
-				ParserLog(@"Processing node %@", currentNode.name);
+			if( !([key isEqualToString:@"bind"] || [
+			if( [node.childNodes count] ) {
+				// If there is one or more child nodes, we assume that this is an expansion block
+				NSMutableDictionary *capturedEnvironment = [NSMutableDictionary dictionaryWithDictionary:environment];
 				
-				// Capture {{this}}
-				[invokeEnvironment setObject:[currentNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
-									  forKey:@"this"];
-				
-				// Capture each parameter: this maps the {{def NAME PARAM1}} -> value provided in parameters
-				[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-					NSString *key = [obj lowercaseString];
-					id value = nil;
+				[environment setObject:[^NSString*( TPTemplateNode *currentNode, NSMutableDictionary *currentEnvironment ) {
+					NSMutableDictionary *invokeEnvironment = [NSMutableDictionary dictionaryWithDictionary:capturedEnvironment];
 
-					ParserLog(@"Checking key: %@", key);
+					ParserLog(@"Processing node %@", currentNode.name);
+					
+					// Capture {{this}}
+					[invokeEnvironment setObject:[currentNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
+										  forKey:@"this"];
+					
+					// Capture each parameter: this maps the {{def NAME PARAM1}} -> value provided in parameters
+					[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+						NSString *key = [obj lowercaseString];
+						id value = nil;
 
-					if( [currentNode.valuesMap objectForKey:key] ) {
-						value = [currentNode.valuesMap objectForKey:key];
-						ParserLog(@"Fetching value %@ from current node", value);
-					}
-					else if( [node.valuesMap objectForKey:key] ) {
-						value = [node.valuesMap objectForKey:key];
-						ParserLog(@"Fetching value %@ from def node", value);
-					}
-					else {
-						value = key;
-						ParserLog(@"Unable to find value, using key name %@", value);
-					}
+						ParserLog(@"Checking key: %@", key);
 
-					[invokeEnvironment setObject:[self expandValue:value
-													   environment:currentEnvironment
-															  node:currentNode]
-										  forKey:key];
-				}];
-				
-				// This walks the node on which the def is being invoked to see if there are any bind commands
-				for( TPTemplateNode *bindNode in currentNode.childNodes ) {
-					if( [bindNode.name isEqualToString:@"bind"] && [node.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] ) {
-						if( [bindNode.childNodes count] ) {
-							[invokeEnvironment setObject:[bindNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
-												  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+						if( [currentNode.valuesMap objectForKey:key] ) {
+							value = [currentNode.valuesMap objectForKey:key];
+							ParserLog(@"Fetching value %@ from current node", value);
 						}
-						else if( [bindNode.values count] > 0 ) {
-							[invokeEnvironment setObject:[self expandValue:[bindNode.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] 
-															   environment:currentEnvironment
-																	  node:currentNode]
-												  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+						else if( [node.valuesMap objectForKey:key] ) {
+							value = [node.valuesMap objectForKey:key];
+							ParserLog(@"Fetching value %@ from def node", value);
+						}
+						else {
+							value = key;
+							ParserLog(@"Unable to find value, using key name %@", value);
+						}
+
+						[invokeEnvironment setObject:[self expandValue:value
+														   environment:currentEnvironment
+																  node:currentNode]
+											  forKey:key];
+					}];
+					
+					// This walks the node on which the def is being invoked to see if there are any bind commands
+					for( TPTemplateNode *bindNode in currentNode.childNodes ) {
+						if( [bindNode.name isEqualToString:@"bind"] && [node.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] ) {
+							if( [bindNode.childNodes count] ) {
+								[invokeEnvironment setObject:[bindNode.childNodes tp_templateNodesExpandedUsingEnvironment:currentEnvironment]
+													  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+							}
+							else if( [bindNode.values count] > 0 ) {
+								[invokeEnvironment setObject:[self expandValue:[bindNode.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] 
+																   environment:currentEnvironment
+																		  node:currentNode]
+													  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+							}
 						}
 					}
-				}
-				
-				ParserLog(@"Invoke environment: %@ (%@)", invokeEnvironment, currentNode);
-				
-				// Expand and return the result
-				NSString *expansion = [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
-				ParserLog(@"Expansion for %@ = %@", currentNode.name, expansion);
-				return expansion;
-			} copy] forKey:key];
-		}
-		else {
-			/// If there are no child nodes, we set a value in the environment
-			[environment setObject:[self expandValue:[node.valuesMap objectForKey:[node.values objectAtIndex:0]]
-										 environment:environment
-												node:node]
-							forKey:[[node.values objectAtIndex:0] lowercaseString]];
+					
+					ParserLog(@"Invoke environment: %@ (%@)", invokeEnvironment, currentNode);
+					
+					// Expand and return the result
+					NSString *expansion = [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
+					ParserLog(@"Expansion for %@ = %@", currentNode.name, expansion);
+					return expansion;
+				} copy] forKey:key];
+			}
+			else {
+				/// If there are no child nodes, we set a value in the environment
+				[environment setObject:[self expandValue:[node.valuesMap objectForKey:[node.values objectAtIndex:0]]
+											 environment:environment
+													node:node]
+								forKey:key];
 
-			ParserLog(@"Environment: %@", environment);
+				ParserLog(@"Environment: %@", environment);
+			}
 		}
 		
 		return @"";
