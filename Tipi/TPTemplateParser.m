@@ -13,6 +13,9 @@
 #import "NSString+Tipi.h"
 #import "NSArray+Tipi.h"
 
+#define ParserLog if( NO ) NSLog
+//#define ParserLog NSLog
+
 @interface TPTemplateParser () {
 	TPTemplateNode *root;
 	
@@ -44,23 +47,23 @@
 		
 		[self parseContent:content parent:root];
 		
-		NSLog(@"Node: %@", [root description]);
+		ParserLog(@"Node: %@", [root description]);
 	}
 	return self;
 }
 - (NSString*)expandValue:(id)value environment:(NSMutableDictionary*)currentEnvironment node:(TPTemplateNode*)currentNode {
-	NSLog(@"Looking to expand value: '%@'", value);
+	ParserLog(@"Looking to expand value: '%@'", value);
 	
 	if( [[value class] isSubclassOfClass:[NSString class]] ) {
 		if( [currentEnvironment objectForKey:[value lowercaseString]] ) {
 			value = [currentEnvironment objectForKey:[value lowercaseString]];
 		}
-		NSLog(@"Looking for value %@ in current environment", value);
+		ParserLog(@"Looking for value %@ in current environment", value);
 	}
 	else {
 		NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global ) = value;
 		value = expansionBlock(currentNode, currentEnvironment);
-		NSLog(@"Expanded value %@ in current environment", value);
+		ParserLog(@"Expanded value %@ in current environment", value);
 	}
 	
 	if( value == nil ) {
@@ -92,19 +95,19 @@
 					NSString *key = [obj lowercaseString];
 					id value = nil;
 
-					NSLog(@"Checking key: %@", key);
+					ParserLog(@"Checking key: %@", key);
 
 					if( [currentNode.valuesMap objectForKey:key] ) {
 						value = [currentNode.valuesMap objectForKey:key];
-						NSLog(@"Fetching value %@ from current node", value);
+						ParserLog(@"Fetching value %@ from current node", value);
 					}
 					else if( [node.valuesMap objectForKey:key] ) {
 						value = [node.valuesMap objectForKey:key];
-						NSLog(@"Fetching value %@ from def node", value);
+						ParserLog(@"Fetching value %@ from def node", value);
 					}
 					else {
 						value = key;
-						NSLog(@"Unable to find value, using key name %@", value);
+						ParserLog(@"Unable to find value, using key name %@", value);
 					}
 
 					[invokeEnvironment setObject:[self expandValue:value
@@ -131,7 +134,7 @@
 					}
 				}
 				
-				NSLog(@"Invoke environment: %@ (%@)", invokeEnvironment, currentNode);
+				ParserLog(@"Invoke environment: %@ (%@)", invokeEnvironment, currentNode);
 				
 				// Expand and return the result
 				return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
@@ -144,7 +147,7 @@
 												node:node]
 							forKey:[[node.values objectAtIndex:0] lowercaseString]];
 
-			NSLog(@"Environment: %@", environment);
+			ParserLog(@"Environment: %@", environment);
 		}
 		
 		return @"";
@@ -288,8 +291,8 @@
 				[baseEnvironment setObject:attributeValue forKey:attributeName];
 			}
 			
-			NSLog(@"Parts: %@", parts);
-			NSLog(@"Base Environment: %@", baseEnvironment);
+			ParserLog(@"Parts: %@", parts);
+			ParserLog(@"Base Environment: %@", baseEnvironment);
 			
 			[content deleteCharactersInRange:NSMakeRange(0, node.originalValue.length)];
 			
