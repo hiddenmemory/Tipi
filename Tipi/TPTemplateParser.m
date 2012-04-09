@@ -302,45 +302,28 @@
 				}
 				
 				node.type = TPNodeDefinition;
-				node.name = [parts objectAtIndex:0];
-				
-				if( [parts count] > 1 ) {
-					[node.values addObjectsFromArray:[parts subarrayWithRange:NSMakeRange(1, [parts count] - 1)]];
-					
-					for( NSString *key in node.values ) {
-						[node.valuesMap setObject:[baseEnvironment objectForKey:key] forKey:key];
-					}
-				}
-				
-				[parent.childNodes addObject:node];
-				
-				if( [content characterAtIndex:0] == '\n' ) {
-					[content deleteCharactersInRange:NSMakeRange(0, 1)];
-				}
 				
 				[self parseContent:content parent:node];
 			}
 			else if( [[parts objectAtIndex:0] hasPrefix:tagBlockClose] ) {
-				if( [content characterAtIndex:0] == '\n' ) {
-					[content deleteCharactersInRange:NSMakeRange(0, 1)];
-				}
-				
 				return YES;
 			}
 			else {
 				node.type = TPNodeApplication;
-				node.name = [parts objectAtIndex:0];
+			}
+			
+			node.name = [parts objectAtIndex:0];
+			
+			if( [parts count] > 1 ) {
+				[node.values addObjectsFromArray:[parts subarrayWithRange:NSMakeRange(1, [parts count] - 1)]];
 				
-				if( [parts count] > 1 ) {
-					[node.values addObjectsFromArray:[parts subarrayWithRange:NSMakeRange(1, [parts count] - 1)]];
-				}
-
 				for( NSString *key in node.values ) {
 					[node.valuesMap setObject:[baseEnvironment objectForKey:key] forKey:key];
 				}
-
-				[parent.childNodes addObject:node];
 			}
+			
+			[parent.childNodes addObject:node];
+
 		}
 		else {
 			[NSException raise:@"TagParseError" format:@"Error parsing tag"];
