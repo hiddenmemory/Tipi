@@ -33,18 +33,7 @@ int main(int argc, const char * argv[]) {
 							
 							TPTemplateParser *q = [TPTemplateParser parserForFile:inputPath];
 							
-							id importBlock = ^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
-								NSString *importPath = [NSString stringWithFormat:@"%@%@", testPath, [node.valuesMap objectForKey:@"source"]];
-								if( [[NSFileManager defaultManager] fileExistsAtPath:importPath] ) {
-									TPTemplateParser *importParser = [TPTemplateParser parserForFile:importPath];
-									return [importParser.root expansionUsingEnvironment:environment];
-								}
-								else {
-									return @"";
-								}
-							};
-							
-							NSString *expansion = [q expansionUsingEnvironment:[NSDictionary dictionaryWithObject:[importBlock copy] forKey:@"import"]];
+							NSString *expansion = [q expansionUsingImportEnvironment:[NSDictionary dictionary]];
 							
 							if( [[NSFileManager defaultManager] fileExistsAtPath:outputPath] ) {
 								NSString *goldenExpansion = [NSString stringWithContentsOfFile:outputPath

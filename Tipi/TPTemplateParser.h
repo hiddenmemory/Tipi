@@ -14,6 +14,9 @@
 @property (readonly) TPTemplateNode *root;
 
 + (TPTemplateParser*)parserForFile:(NSString*)path;
-- (NSString*)expansionUsingEnvironment:(NSDictionary*)values;
+
 - (NSString*)expansion;
+- (NSString*)expansionUsingEnvironment:(NSDictionary*)values;
+- (NSString*)expansionUsingImportEnvironment:(NSDictionary*)values;
+
 @end

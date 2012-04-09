@@ -21,6 +21,8 @@
 	
 	NSString *tagStart, *tagEnd;
 	NSString *tagBlockOpen, *tagBlockClose;
+	
+	NSString *sourcePath;
 }
 - (id)initWithFileAtPath:(NSString*)path;
 - (void)parseContent:(NSMutableString*)content parent:(TPTemplateNode*)parent;
@@ -46,6 +48,8 @@
 																	encoding:NSUTF8StringEncoding
 																	   error:nil];
 		
+		sourcePath = [path stringByDeletingLastPathComponent];
+		
 		[self parseContent:content parent:root];
 		
 		ParserLog(@"Node: %@", [root description]);
@@ -66,6 +70,24 @@
 	}
 	
 	return value;
+}
+- (NSString*)expansionUsingImportEnvironment:(NSDictionary*)values {
+	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
+	
+	id importBlock = ^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
+		NSString *importPath = [NSString stringWithFormat:@"%@/%@", sourcePath, [node.valuesMap objectForKey:@"source"]];
+
+		if( [[NSFileManager defaultManager] fileExistsAtPath:importPath] ) {
+			TPTemplateParser *importParser = [TPTemplateParser parserForFile:importPath];
+			return [importParser.root expansionUsingEnvironment:environment];
+		}
+		
+		return @"";
+	};
+	
+	[environment setObject:[importBlock copy] forKey:@"import"];
+
+	return [self expansionUsingEnvironment:environment];
 }
 - (NSString*)expansionUsingEnvironment:(NSDictionary*)values {
 	NSMutableDictionary *environment = [NSMutableDictionary dictionary];
