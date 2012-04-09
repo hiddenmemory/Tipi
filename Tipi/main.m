@@ -48,8 +48,6 @@ int main(int argc, const char * argv[]) {
 									
 									NSString *temporaryPath = [NSString stringWithFormat:@"%@.fail", outputPath];
 									
-									NSLog(@"Temporary Path: %@", temporaryPath);
-									
 									[expansion writeToFile:temporaryPath
 												atomically:NO
 												  encoding:NSUTF8StringEncoding

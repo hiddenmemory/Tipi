@@ -285,9 +285,15 @@ After expansion, Tipi *renders* the final DOM tree by removing any remaining tag
 
 Tipi is a work in progress.
 
+ - Provide a set of strategies to remove / compress excessive whitespace within the output
+   of the template expansion.
+   
+ - Create a schemes to generate static libraries that can be compiled into OS X and
+   iOS projects.
+
 #Other Versions
 
- - Objective-C - <https://github.com/hiddenmemory/Tipi/>
+ - Objective-C - <https://github.com/hiddenmemory/Tipi/> (this version)
  - Scala - <https://github.com/davegurnell/tipi/>
 
 # Licence
