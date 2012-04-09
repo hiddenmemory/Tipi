@@ -71,6 +71,10 @@
 		831A8D2A153329DF00E36646 /* Test06.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test06.output; sourceTree = "<group>"; };
 		831A8D2B153329DF00E36646 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		831A8D2C15332D8D00E36646 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		831A8D2E15333F2B00E36646 /* Test01.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.input; sourceTree = "<group>"; };
+		831A8D3015333F2B00E36646 /* Test02.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.input; sourceTree = "<group>"; };
+		831A8D321533422D00E36646 /* Test01.import */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.import; sourceTree = "<group>"; };
+		831A8D331533422D00E36646 /* Test02.import */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.import; sourceTree = "<group>"; };
 		838CA669152DB08F0013C064 /* Tipi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tipi; sourceTree = BUILT_PRODUCTS_DIR; };
 		838CA66D152DB08F0013C064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		838CA670152DB08F0013C064 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		831A8D1C153329DF00E36646 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				831A8D2D15333F2B00E36646 /* import */,
 				831A8D1D153329DF00E36646 /* .gitignore */,
 				831A8D1E153329DF00E36646 /* basic */,
 				831A8D2B153329DF00E36646 /* README.md */,
@@ -167,6 +172,17 @@
 				831A8D2A153329DF00E36646 /* Test06.output */,
 			);
 			path = basic;
+			sourceTree = "<group>";
+		};
+		831A8D2D15333F2B00E36646 /* import */ = {
+			isa = PBXGroup;
+			children = (
+				831A8D321533422D00E36646 /* Test01.import */,
+				831A8D331533422D00E36646 /* Test02.import */,
+				831A8D2E15333F2B00E36646 /* Test01.input */,
+				831A8D3015333F2B00E36646 /* Test02.input */,
+			);
+			path = import;
 			sourceTree = "<group>";
 		};
 		838CA65E152DB08F0013C064 = {

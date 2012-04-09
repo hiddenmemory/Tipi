@@ -214,7 +214,7 @@ First, create a `TPTemplateParser` object, making sure to reference the file to 
 
 To evaluate the template into an NSString:
 
-    NSString *expansion = [tipi expansion]
+    NSString *expansion = [tipi expansion];
 
 If you wish to provide a set of values into the template expasion you need to provide an NSDictionary and call `expansionUsingEnvironment:`
 

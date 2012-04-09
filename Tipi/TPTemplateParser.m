@@ -28,6 +28,7 @@
 @end
 
 @implementation TPTemplateParser
+@synthesize root;
 + (TPTemplateParser*)parserForFile:(NSString*)path {
 	return [[[self class] alloc] initWithFileAtPath:path];
 }
@@ -54,16 +55,10 @@
 - (id)expandValue:(id)value environment:(NSMutableDictionary*)currentEnvironment node:(TPTemplateNode*)currentNode {
 	ParserLog(@"Looking to expand value: '%@'", value);
 	
-	if( [[value class] isSubclassOfClass:[NSString class]] ) {
+	if( [[value class] isSubclassOfClass:[NSString class]] && [value rangeOfString:@" "].location == NSNotFound ) {
 		if( [currentEnvironment objectForKey:[value lowercaseString]] ) {
 			value = [currentEnvironment objectForKey:[value lowercaseString]];
 		}
-		ParserLog(@"Looking for value %@ in current environment", value);
-	}
-	else {
-//		NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global ) = value;
-//		value = expansionBlock(currentNode, currentEnvironment);
-		ParserLog(@"Expanded value %@ in current environment", value);
 	}
 	
 	if( value == nil ) {

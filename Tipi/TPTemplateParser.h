@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class TPTemplateNode;
+
 @interface TPTemplateParser : NSObject
+@property (readonly) TPTemplateNode *root;
+
 + (TPTemplateParser*)parserForFile:(NSString*)path;
 - (NSString*)expansionUsingEnvironment:(NSDictionary*)values;
 - (NSString*)expansion;
