@@ -48,6 +48,27 @@
 	}
 	return self;
 }
+- (NSString*)expandValue:(id)value environment:(NSMutableDictionary*)currentEnvironment node:(TPTemplateNode*)currentNode {
+	NSLog(@"Looking to expand value: '%@'", value);
+	
+	if( [[value class] isSubclassOfClass:[NSString class]] ) {
+		if( [currentEnvironment objectForKey:[value lowercaseString]] ) {
+			value = [currentEnvironment objectForKey:[value lowercaseString]];
+		}
+		NSLog(@"Looking for value %@ in current environment", value);
+	}
+	else {
+		NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global ) = value;
+		value = expansionBlock(currentNode, currentEnvironment);
+		NSLog(@"Expanded value %@ in current environment", value);
+	}
+	
+	if( value == nil ) {
+		value = @"";
+	}
+	
+	return value;
+}
 - (NSString*)expansionUsingEnvironment:(NSDictionary*)values {
 	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
 	
@@ -70,43 +91,47 @@
 				[[node.values subarrayWithRange:NSMakeRange(1, [node.values count] - 1)] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 					NSString *key = [obj lowercaseString];
 					id value = nil;
-					
+
+					NSLog(@"Checking key: %@", key);
+
 					if( [currentNode.valuesMap objectForKey:key] ) {
 						value = [currentNode.valuesMap objectForKey:key];
+						NSLog(@"Fetching value %@ from current node", value);
 					}
 					else if( [node.valuesMap objectForKey:key] ) {
 						value = [node.valuesMap objectForKey:key];
+						NSLog(@"Fetching value %@ from def node", value);
 					}
 					else {
 						value = key;
-					}
-					
-					if( [[value class] isSubclassOfClass:[NSString class]] ) {
-						value = [currentEnvironment objectForKey:value];
-					}
-					else {
-						NSString *(^expansionBlock)( TPTemplateNode *node, NSMutableDictionary *global ) = value;
-						value = expansionBlock(currentNode, environment);
-					}
-					
-					if( value == nil ) {
-						value = @"";
+						NSLog(@"Unable to find value, using key name %@", value);
 					}
 
-					[invokeEnvironment setObject:value forKey:key];
+					[invokeEnvironment setObject:[self expandValue:value
+													   environment:currentEnvironment
+															  node:currentNode]
+										  forKey:key];
 				}];
 				
 				// This walks the node on which the def is being invoked to see if there are any bind commands
 				for( TPTemplateNode *bindNode in currentNode.childNodes ) {
-					if( [bindNode.name isEqualToString:@"bind"] ) {
-						[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
-							[invokeEnvironment setObject:[obj expansionUsingEnvironment:currentEnvironment]
+					if( [bindNode.name isEqualToString:@"bind"] && [node.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] ) {
+						if( [bindNode.childNodes count] ) {
+							[bindNode.childNodes enumerateObjectsUsingBlock:^(TPTemplateNode *obj, NSUInteger idx, BOOL *stop) {
+								[invokeEnvironment setObject:[obj expansionUsingEnvironment:currentEnvironment]
+													  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
+							}];
+						}
+						else if( [bindNode.values count] > 0 ) {
+							[invokeEnvironment setObject:[self expandValue:[bindNode.valuesMap objectForKey:[bindNode.values objectAtIndex:0]] 
+															   environment:currentEnvironment
+																	  node:currentNode]
 												  forKey:[[bindNode.values objectAtIndex:0] lowercaseString]];
-						}];
+						}
 					}
 				}
 				
-				NSLog(@"Invoke environment: %@", invokeEnvironment);
+				NSLog(@"Invoke environment: %@ (%@)", invokeEnvironment, currentNode);
 				
 				// Expand and return the result
 				return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
@@ -114,7 +139,10 @@
 		}
 		else {
 			/// If there are no child nodes, we set a value in the environment
-			[environment setObject:[node.values objectAtIndex:1] forKey:[[node.values objectAtIndex:0] lowercaseString]];
+			[environment setObject:[self expandValue:[node.valuesMap objectForKey:[node.values objectAtIndex:0]]
+										 environment:environment
+												node:node]
+							forKey:[[node.values objectAtIndex:0] lowercaseString]];
 
 			NSLog(@"Environment: %@", environment);
 		}
@@ -226,7 +254,7 @@
 				switch( currentState ) {
 					case STATE_WAITING_FOR_NAME:
 						if( [token length] ) {
-							attributeName = token;
+							attributeName = [token lowercaseString];
 							currentState = STATE_WAITING_FOR_EQUALS;
 						}
 						break;
@@ -238,7 +266,7 @@
 							else {
 								[parts addObject:attributeName];
 								[baseEnvironment setObject:@"" forKey:attributeName];
-								attributeName = token;
+								attributeName = [token lowercaseString];
 								attributeValue = @"";
 								currentState = STATE_WAITING_FOR_EQUALS;
 							}
