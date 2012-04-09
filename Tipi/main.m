@@ -44,6 +44,27 @@ int main(int argc, const char * argv[]) {
 								}
 								else {
 									NSLog(@"[%@] >>>> Test failed <<<<", item);
+									
+									NSString *temporaryPath = [NSString stringWithFormat:@"%@.fail", outputPath];
+									
+									NSLog(@"Temporary Path: %@", temporaryPath);
+									
+									[expansion writeToFile:temporaryPath
+												atomically:NO
+												  encoding:NSUTF8StringEncoding
+													 error:nil];
+									
+									NSTask *task = [[NSTask alloc] init];
+									task.launchPath = @"/usr/bin/diff";
+									task.arguments = [NSArray arrayWithObjects:
+																		@"-u",
+																		outputPath,
+																		temporaryPath, nil];
+									[task launch];
+									[task waitUntilExit];
+									
+									[[NSFileManager defaultManager] removeItemAtPath:temporaryPath
+																			   error:nil];
 								}
 							}
 							else {

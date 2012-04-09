@@ -56,6 +56,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		831A8D1D153329DF00E36646 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		831A8D1F153329DF00E36646 /* Test01.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.input; sourceTree = "<group>"; };
+		831A8D20153329DF00E36646 /* Test01.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.output; sourceTree = "<group>"; };
+		831A8D21153329DF00E36646 /* Test02.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.input; sourceTree = "<group>"; };
+		831A8D22153329DF00E36646 /* Test02.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.output; sourceTree = "<group>"; };
+		831A8D23153329DF00E36646 /* Test03.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test03.input; sourceTree = "<group>"; };
+		831A8D24153329DF00E36646 /* Test03.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test03.output; sourceTree = "<group>"; };
+		831A8D25153329DF00E36646 /* Test04.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test04.input; sourceTree = "<group>"; };
+		831A8D26153329DF00E36646 /* Test04.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test04.output; sourceTree = "<group>"; };
+		831A8D27153329DF00E36646 /* Test05.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test05.input; sourceTree = "<group>"; };
+		831A8D28153329DF00E36646 /* Test05.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test05.output; sourceTree = "<group>"; };
+		831A8D29153329DF00E36646 /* Test06.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test06.input; sourceTree = "<group>"; };
+		831A8D2A153329DF00E36646 /* Test06.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test06.output; sourceTree = "<group>"; };
+		831A8D2B153329DF00E36646 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		838CA669152DB08F0013C064 /* Tipi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tipi; sourceTree = BUILT_PRODUCTS_DIR; };
 		838CA66D152DB08F0013C064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		838CA670152DB08F0013C064 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,6 +139,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		831A8D1C153329DF00E36646 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				831A8D1D153329DF00E36646 /* .gitignore */,
+				831A8D1E153329DF00E36646 /* basic */,
+				831A8D2B153329DF00E36646 /* README.md */,
+			);
+			path = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		831A8D1E153329DF00E36646 /* basic */ = {
+			isa = PBXGroup;
+			children = (
+				831A8D1F153329DF00E36646 /* Test01.input */,
+				831A8D20153329DF00E36646 /* Test01.output */,
+				831A8D21153329DF00E36646 /* Test02.input */,
+				831A8D22153329DF00E36646 /* Test02.output */,
+				831A8D23153329DF00E36646 /* Test03.input */,
+				831A8D24153329DF00E36646 /* Test03.output */,
+				831A8D25153329DF00E36646 /* Test04.input */,
+				831A8D26153329DF00E36646 /* Test04.output */,
+				831A8D27153329DF00E36646 /* Test05.input */,
+				831A8D28153329DF00E36646 /* Test05.output */,
+				831A8D29153329DF00E36646 /* Test06.input */,
+				831A8D2A153329DF00E36646 /* Test06.output */,
+			);
+			path = basic;
+			sourceTree = "<group>";
+		};
 		838CA65E152DB08F0013C064 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +197,7 @@
 		838CA66F152DB08F0013C064 /* Tipi */ = {
 			isa = PBXGroup;
 			children = (
+				831A8D1C153329DF00E36646 /* Tests */,
 				838CA67B152DB0BF0013C064 /* Tipi */,
 				838CA670152DB08F0013C064 /* main.m */,
 				838CA674152DB08F0013C064 /* Tipi.1 */,
