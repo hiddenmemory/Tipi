@@ -238,18 +238,18 @@ Currently it is possible to provide two different types of values:
 
 Tipi parses these tags into a DOM tree, where each branch is a block and each leaf is a text node. For example, the document:
 
-    {{# person name="Chris" url="http://hiddenmemory.co.uk" }}
+    {{# person name="Chris" url="http://www.hiddenmemory.co.uk" }}
       {{# occupation }}Software Developer{{/ occupation }]
       {{# hobbies }}Kitesurfing, mountain biking{{/ hobbies }}
     {{/ person }}
 
 would be parsed as follows:
 
- - block "person" (name = "Dave", url="http://untyped.com")
+ - block "person" (name = "Chris", url="http://www.hiddenmemory.co.uk")
     - block "occupation"
        - text "Software Developer"
     - block "hobbies"
-       - text "Music, running"
+       - text "Kitesurfing, mountain biking"
 
 ## Expansion
 
