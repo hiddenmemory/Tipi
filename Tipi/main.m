@@ -27,11 +27,33 @@ int main(int argc, const char * argv[]) {
 			return [node.childNodes tp_templateNodesExpandedUsingEnvironment:invokeEnvironment];
 		} copy] forKey:@"include"];
 		
-		TPDataParser *p = [TPMarkdownDataParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test01.txt"];
-		NSLog(@"p.values = %@", [p values]);
-		
-		TPTemplateParser *q = [TPTemplateParser parserForFile:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/Test02.html"];
-		NSLog(@"Expansion:\nSTART:\n%@:END", [q expansionUsingEnvironment:p.values]);
+		for( int i = 1; i <= 6; i++ ) {
+			NSString *inputPath = [NSString stringWithFormat:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/basic/Test0%d.input", i];
+			NSString *outputPath = [NSString stringWithFormat:@"/Users/chris/Repositories/git/hiddenMemory/Tipi/Tests/basic/Test0%d.output", i];
+			
+			TPTemplateParser *q = [TPTemplateParser parserForFile:inputPath];
+			NSString *expansion = [q expansionUsingEnvironment:[NSDictionary dictionary]];
+								   
+			if( [[NSFileManager defaultManager] fileExistsAtPath:outputPath] ) {
+				NSString *goldenExpansion = [NSString stringWithContentsOfFile:outputPath
+																	  encoding:NSUTF8StringEncoding
+																		 error:nil];
+				
+				if( [goldenExpansion isEqualToString:expansion] ) {
+					NSLog(@"Test %d passed", i);
+				}
+				else {
+					NSLog(@">>>> Test %d failed <<<<", i);
+				}
+			}
+			else {
+				NSLog(@"Expansion:\nSTART:\n%@:END", expansion);
+				[expansion writeToFile:outputPath
+							atomically:NO
+							  encoding:NSUTF8StringEncoding
+								 error:nil];
+			}
+		}
 	}
     return 0;
 }

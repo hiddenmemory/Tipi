@@ -13,8 +13,8 @@
 #import "NSString+Tipi.h"
 #import "NSArray+Tipi.h"
 
-//#define ParserLog if( NO ) NSLog
-#define ParserLog NSLog
+#define ParserLog if( NO ) NSLog
+//#define ParserLog NSLog
 
 @interface TPTemplateParser () {
 	TPTemplateNode *root;
