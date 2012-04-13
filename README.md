@@ -210,6 +210,15 @@ Tipi allows the passing of one template as an argument into another:
 
 Due to lazy evaluation of parameters being passed into a template, templates can be passed in and evaluated in place. In the above example, Tipi will invoke `dynamic_list_item` when ever `list_item`. This opens up all sorts of templating opporunities allowing list and layout templates to need not care about specifics of inidivdual item layout.
 
+# Compiling Tipi into your Objective-C project
+
+ - First drag the xcodeproj file into your Xcode 4 workspace.
+ - Then, depending on your target, add TipiOS.a for iOS projects, or TipiOSX.a for Mac OS X, into the linked libraries section of your target.
+ - Go into the target's `Build Settings` and do a search for `Other Linker Flags`
+ - Double click on the white space and add, if not already there `-ObjC`
+ 
+You should be ready to rock and roll.
+
 # Running Tipi from Objective-C
 
 First, create a `TPTemplateParser` object, making sure to reference the file to parse:
@@ -288,9 +297,6 @@ Tipi is a work in progress.
  - Provide a set of strategies to remove / compress excessive whitespace within the output
    of the template expansion.
    
- - Create a schemes to generate static libraries that can be compiled into OS X and
-   iOS projects.
-
  - Clean up registering tag handlers.
 
 #Other Versions

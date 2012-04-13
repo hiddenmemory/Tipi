@@ -213,13 +213,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		830EF8EC153880A100394C57 /* TipiOS */ = {
+		830EF8EC153880A100394C57 /* TipiOS (iPhone, iPod touch, iPad) */ = {
 			isa = PBXGroup;
 			children = (
 				830EF8EF153880A100394C57 /* TipiOS.h */,
 				830EF8F0153880A100394C57 /* TipiOS.m */,
 				830EF8ED153880A100394C57 /* Supporting Files */,
 			);
+			name = "TipiOS (iPhone, iPod touch, iPad)";
 			path = TipiOS;
 			sourceTree = "<group>";
 		};
@@ -231,14 +232,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		830EF9131538811400394C57 /* TipiTestHarness */ = {
+		830EF9131538811400394C57 /* Test Harness */ = {
 			isa = PBXGroup;
 			children = (
 				838CA670152DB08F0013C064 /* main.m */,
 				838CA674152DB08F0013C064 /* Tipi.1 */,
 				838CA672152DB08F0013C064 /* Supporting Files */,
 			);
-			name = TipiTestHarness;
+			name = "Test Harness";
 			path = Tipi;
 			sourceTree = "<group>";
 		};
@@ -252,13 +253,14 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		830EF91F1538816300394C57 /* TipiOSX */ = {
+		830EF91F1538816300394C57 /* TipiOSX (Lion) */ = {
 			isa = PBXGroup;
 			children = (
 				830EF9221538816300394C57 /* TipiOSX.h */,
 				830EF9231538816300394C57 /* TipiOSX.m */,
 				830EF9201538816300394C57 /* Supporting Files */,
 			);
+			name = "TipiOSX (Lion)";
 			path = TipiOSX;
 			sourceTree = "<group>";
 		};
@@ -270,14 +272,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		831A8D1C153329DF00E36646 /* TipiTests */ = {
+		831A8D1C153329DF00E36646 /* Tipi Tests */ = {
 			isa = PBXGroup;
 			children = (
 				831A8D2B153329DF00E36646 /* README.md */,
 				831A8D2D15333F2B00E36646 /* import */,
 				831A8D1E153329DF00E36646 /* basic */,
 			);
-			name = TipiTests;
+			name = "Tipi Tests";
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -316,11 +318,12 @@
 		838CA65E152DB08F0013C064 = {
 			isa = PBXGroup;
 			children = (
-				838CA66F152DB08F0013C064 /* TipiCore */,
-				831A8D1C153329DF00E36646 /* TipiTests */,
-				830EF9131538811400394C57 /* TipiTestHarness */,
-				830EF8EC153880A100394C57 /* TipiOS */,
-				830EF91F1538816300394C57 /* TipiOSX */,
+				831A8D2C15332D8D00E36646 /* README.md */,
+				838CA67B152DB0BF0013C064 /* Tipi Core Library */,
+				831A8D1C153329DF00E36646 /* Tipi Tests */,
+				830EF9131538811400394C57 /* Test Harness */,
+				830EF8EC153880A100394C57 /* TipiOS (iPhone, iPod touch, iPad) */,
+				830EF91F1538816300394C57 /* TipiOSX (Lion) */,
 				838CA66C152DB08F0013C064 /* Frameworks */,
 				838CA66A152DB08F0013C064 /* Products */,
 			);
@@ -348,16 +351,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		838CA66F152DB08F0013C064 /* TipiCore */ = {
-			isa = PBXGroup;
-			children = (
-				831A8D2C15332D8D00E36646 /* README.md */,
-				838CA67B152DB0BF0013C064 /* Tipi */,
-			);
-			name = TipiCore;
-			path = Tipi;
-			sourceTree = "<group>";
-		};
 		838CA672152DB08F0013C064 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,14 +359,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		838CA67B152DB0BF0013C064 /* Tipi */ = {
+		838CA67B152DB0BF0013C064 /* Tipi Core Library */ = {
 			isa = PBXGroup;
 			children = (
 				838CA722152DBA560013C064 /* Helpers */,
 				838CA721152DBA4B0013C064 /* Parsers */,
 				83DC136C153050D8005FCB72 /* Tipi.h */,
 			);
-			name = Tipi;
+			name = "Tipi Core Library";
+			path = Tipi;
 			sourceTree = "<group>";
 		};
 		838CA692152DB8A00013C064 /* Discount */ = {
