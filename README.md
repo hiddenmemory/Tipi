@@ -214,6 +214,7 @@ Due to lazy evaluation of parameters being passed into a template, templates can
 
  - First drag the `Tipi.xcodeproj` file into your Xcode 4 workspace.
  - Then, depending on your target, add `TipiOS.a` for iOS projects, or `TipiOSX.a` for Mac OS X, into the linked libraries section of your target.
+ - Then add `libicucore.dylib` to the linked libraries, once done,
  - Go into the target's `Build Settings` and do a search for `Other Linker Flags`
  - Double click on the white space and add, if not already there `-ObjC`
  
