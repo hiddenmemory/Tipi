@@ -7,39 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830EF8EB153880A100394C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA66D152DB08F0013C064 /* Foundation.framework */; };
+		830EF8F1153880A100394C57 /* TipiOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EF8F0153880A100394C57 /* TipiOS.m */; };
+		830EF8F6153880E000394C57 /* amalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA694152DB8A10013C064 /* amalloc.c */; };
+		830EF8F7153880E000394C57 /* basename.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA696152DB8A10013C064 /* basename.c */; };
+		830EF8F8153880E000394C57 /* Csio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69B152DB8A10013C064 /* Csio.c */; };
+		830EF8F9153880E000394C57 /* css.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69C152DB8A10013C064 /* css.c */; };
+		830EF8FA153880E000394C57 /* docheader.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69E152DB8A10013C064 /* docheader.c */; };
+		830EF8FB153880E000394C57 /* dumptree.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69F152DB8A10013C064 /* dumptree.c */; };
+		830EF8FC153880E000394C57 /* emmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A0152DB8A10013C064 /* emmatch.c */; };
+		830EF8FD153880E000394C57 /* flags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A1152DB8A10013C064 /* flags.c */; };
+		830EF8FE153880E000394C57 /* generate.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A2152DB8A10013C064 /* generate.c */; };
+		830EF8FF153880E000394C57 /* html5.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A3152DB8A10013C064 /* html5.c */; };
+		830EF900153880E000394C57 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6AC152DB8A10013C064 /* markdown.c */; };
+		830EF901153880E000394C57 /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6B4152DB8A10013C064 /* mkdio.c */; };
+		830EF902153880E000394C57 /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BD152DB8A10013C064 /* resource.c */; };
+		830EF903153880E000394C57 /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BE152DB8A10013C064 /* setup.c */; };
+		830EF904153880E000394C57 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BF152DB8A10013C064 /* tags.c */; };
+		830EF905153880E000394C57 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6EF152DB8A10013C064 /* toc.c */; };
+		830EF906153880E000394C57 /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F6152DB8A10013C064 /* xml.c */; };
+		830EF907153880E000394C57 /* xmlpage.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F7152DB8A10013C064 /* xmlpage.c */; };
+		830EF908153880E000394C57 /* discountWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA700152DB8A10013C064 /* discountWrapper.m */; };
+		830EF909153880E000394C57 /* markdownWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA701152DB8A10013C064 /* markdownWrapper.c */; };
+		830EF90A153880E000394C57 /* mkdioWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA703152DB8A10013C064 /* mkdioWrapper.c */; };
+		830EF90B153880E000394C57 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA68B152DB59F0013C064 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		830EF90C153880E000394C57 /* NSString+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+Tipi.m */; };
+		830EF90D153880E000394C57 /* NSArray+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC136F15305157005FCB72 /* NSArray+Tipi.m */; };
+		830EF90E153880E000394C57 /* TPDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPDataParser.m */; };
+		830EF90F153880E000394C57 /* TPTextDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA680152DB11E0013C064 /* TPTextDataParser.m */; };
+		830EF910153880E000394C57 /* TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */; };
+		830EF911153880E000394C57 /* TPTemplateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA725152DBEEB0013C064 /* TPTemplateParser.m */; };
+		830EF912153880E000394C57 /* TPTemplateNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA728152DC02D0013C064 /* TPTemplateNode.m */; };
+		830EF91A1538816300394C57 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830EF9191538816300394C57 /* Cocoa.framework */; };
+		830EF9241538816300394C57 /* TipiOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EF9231538816300394C57 /* TipiOSX.m */; };
+		830EF9291538816D00394C57 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830EF9281538816D00394C57 /* libicucore.dylib */; };
+		830EF92A1538818600394C57 /* amalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA694152DB8A10013C064 /* amalloc.c */; };
+		830EF92B1538818600394C57 /* basename.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA696152DB8A10013C064 /* basename.c */; };
+		830EF92C1538818600394C57 /* Csio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69B152DB8A10013C064 /* Csio.c */; };
+		830EF92D1538818600394C57 /* css.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69C152DB8A10013C064 /* css.c */; };
+		830EF92E1538818600394C57 /* docheader.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69E152DB8A10013C064 /* docheader.c */; };
+		830EF92F1538818600394C57 /* dumptree.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69F152DB8A10013C064 /* dumptree.c */; };
+		830EF9301538818600394C57 /* emmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A0152DB8A10013C064 /* emmatch.c */; };
+		830EF9311538818600394C57 /* flags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A1152DB8A10013C064 /* flags.c */; };
+		830EF9321538818600394C57 /* generate.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A2152DB8A10013C064 /* generate.c */; };
+		830EF9331538818600394C57 /* html5.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A3152DB8A10013C064 /* html5.c */; };
+		830EF9341538818600394C57 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6AC152DB8A10013C064 /* markdown.c */; };
+		830EF9351538818600394C57 /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6B4152DB8A10013C064 /* mkdio.c */; };
+		830EF9361538818600394C57 /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BD152DB8A10013C064 /* resource.c */; };
+		830EF9371538818600394C57 /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BE152DB8A10013C064 /* setup.c */; };
+		830EF9381538818600394C57 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BF152DB8A10013C064 /* tags.c */; };
+		830EF9391538818600394C57 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6EF152DB8A10013C064 /* toc.c */; };
+		830EF93A1538818600394C57 /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F6152DB8A10013C064 /* xml.c */; };
+		830EF93B1538818600394C57 /* xmlpage.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F7152DB8A10013C064 /* xmlpage.c */; };
+		830EF93C1538818600394C57 /* discountWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA700152DB8A10013C064 /* discountWrapper.m */; };
+		830EF93D1538818600394C57 /* markdownWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA701152DB8A10013C064 /* markdownWrapper.c */; };
+		830EF93E1538818600394C57 /* mkdioWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA703152DB8A10013C064 /* mkdioWrapper.c */; };
+		830EF93F1538818600394C57 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA68B152DB59F0013C064 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		830EF9401538818600394C57 /* NSString+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+Tipi.m */; };
+		830EF9411538818600394C57 /* NSArray+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC136F15305157005FCB72 /* NSArray+Tipi.m */; };
+		830EF9421538818600394C57 /* TPDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPDataParser.m */; };
+		830EF9431538818600394C57 /* TPTextDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA680152DB11E0013C064 /* TPTextDataParser.m */; };
+		830EF9441538818600394C57 /* TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */; };
+		830EF9451538818600394C57 /* TPTemplateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA725152DBEEB0013C064 /* TPTemplateParser.m */; };
+		830EF9461538818600394C57 /* TPTemplateNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA728152DC02D0013C064 /* TPTemplateNode.m */; };
+		830EF947153881A500394C57 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA68D152DB6920013C064 /* libicucore.dylib */; };
+		830EF948153881B100394C57 /* libTipiOSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830EF9181538816300394C57 /* libTipiOSX.a */; };
 		838CA66E152DB08F0013C064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA66D152DB08F0013C064 /* Foundation.framework */; };
 		838CA671152DB08F0013C064 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA670152DB08F0013C064 /* main.m */; };
 		838CA675152DB08F0013C064 /* Tipi.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838CA674152DB08F0013C064 /* Tipi.1 */; };
-		838CA67E152DB0DA0013C064 /* TPDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPDataParser.m */; };
-		838CA681152DB11E0013C064 /* TPTextDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA680152DB11E0013C064 /* TPTextDataParser.m */; };
-		838CA689152DB55C0013C064 /* NSString+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+Tipi.m */; };
-		838CA68C152DB59F0013C064 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA68B152DB59F0013C064 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		838CA68E152DB6920013C064 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA68D152DB6920013C064 /* libicucore.dylib */; };
-		838CA691152DB7BB0013C064 /* TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */; };
-		838CA705152DB8A10013C064 /* amalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA694152DB8A10013C064 /* amalloc.c */; };
-		838CA706152DB8A10013C064 /* basename.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA696152DB8A10013C064 /* basename.c */; };
-		838CA708152DB8A10013C064 /* Csio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69B152DB8A10013C064 /* Csio.c */; };
-		838CA709152DB8A10013C064 /* css.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69C152DB8A10013C064 /* css.c */; };
-		838CA70A152DB8A10013C064 /* docheader.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69E152DB8A10013C064 /* docheader.c */; };
-		838CA70B152DB8A10013C064 /* dumptree.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69F152DB8A10013C064 /* dumptree.c */; };
-		838CA70C152DB8A10013C064 /* emmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A0152DB8A10013C064 /* emmatch.c */; };
-		838CA70D152DB8A10013C064 /* flags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A1152DB8A10013C064 /* flags.c */; };
-		838CA70E152DB8A10013C064 /* generate.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A2152DB8A10013C064 /* generate.c */; };
-		838CA70F152DB8A10013C064 /* html5.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A3152DB8A10013C064 /* html5.c */; };
-		838CA712152DB8A10013C064 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6AC152DB8A10013C064 /* markdown.c */; };
-		838CA714152DB8A10013C064 /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6B4152DB8A10013C064 /* mkdio.c */; };
-		838CA715152DB8A10013C064 /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BD152DB8A10013C064 /* resource.c */; };
-		838CA716152DB8A10013C064 /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BE152DB8A10013C064 /* setup.c */; };
-		838CA717152DB8A10013C064 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BF152DB8A10013C064 /* tags.c */; };
-		838CA719152DB8A10013C064 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6EF152DB8A10013C064 /* toc.c */; };
-		838CA71C152DB8A10013C064 /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F6152DB8A10013C064 /* xml.c */; };
-		838CA71D152DB8A10013C064 /* xmlpage.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F7152DB8A10013C064 /* xmlpage.c */; };
-		838CA71E152DB8A10013C064 /* discountWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA700152DB8A10013C064 /* discountWrapper.m */; };
-		838CA71F152DB8A10013C064 /* markdownWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA701152DB8A10013C064 /* markdownWrapper.c */; };
-		838CA720152DB8A10013C064 /* mkdioWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA703152DB8A10013C064 /* mkdioWrapper.c */; };
-		838CA726152DBEEB0013C064 /* TPTemplateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA725152DBEEB0013C064 /* TPTemplateParser.m */; };
-		838CA729152DC02D0013C064 /* TPTemplateNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA728152DC02D0013C064 /* TPTemplateNode.m */; };
-		83DC137015305157005FCB72 /* NSArray+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC136F15305157005FCB72 /* NSArray+Tipi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +92,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		830EF8EA153880A100394C57 /* libTipiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTipiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		830EF8EE153880A100394C57 /* TipiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipiOS-Prefix.pch"; sourceTree = "<group>"; };
+		830EF8EF153880A100394C57 /* TipiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipiOS.h; sourceTree = "<group>"; };
+		830EF8F0153880A100394C57 /* TipiOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipiOS.m; sourceTree = "<group>"; };
+		830EF9181538816300394C57 /* libTipiOSX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTipiOSX.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		830EF9191538816300394C57 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		830EF91C1538816300394C57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		830EF91D1538816300394C57 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		830EF91E1538816300394C57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		830EF9211538816300394C57 /* TipiOSX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipiOSX-Prefix.pch"; sourceTree = "<group>"; };
+		830EF9221538816300394C57 /* TipiOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipiOSX.h; sourceTree = "<group>"; };
+		830EF9231538816300394C57 /* TipiOSX.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipiOSX.m; sourceTree = "<group>"; };
+		830EF9281538816D00394C57 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libicucore.dylib; sourceTree = DEVELOPER_DIR; };
 		831A8D1F153329DF00E36646 /* Test01.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.input; sourceTree = "<group>"; };
 		831A8D20153329DF00E36646 /* Test01.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.output; sourceTree = "<group>"; };
 		831A8D21153329DF00E36646 /* Test02.input */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.input; sourceTree = "<group>"; };
@@ -76,7 +125,7 @@
 		831A8D331533422D00E36646 /* Test02.import */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.import; sourceTree = "<group>"; };
 		831A8D341533475B00E36646 /* Test01.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test01.output; sourceTree = "<group>"; };
 		831A8D351533475B00E36646 /* Test02.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Test02.output; sourceTree = "<group>"; };
-		838CA669152DB08F0013C064 /* Tipi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tipi; sourceTree = BUILT_PRODUCTS_DIR; };
+		838CA669152DB08F0013C064 /* TipiTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TipiTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		838CA66D152DB08F0013C064 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		838CA670152DB08F0013C064 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		838CA673152DB08F0013C064 /* Tipi-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tipi-Prefix.pch"; sourceTree = "<group>"; };
@@ -133,10 +182,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		830EF8E7153880A100394C57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830EF9291538816D00394C57 /* libicucore.dylib in Frameworks */,
+				830EF8EB153880A100394C57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		830EF9151538816300394C57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830EF947153881A500394C57 /* libicucore.dylib in Frameworks */,
+				830EF91A1538816300394C57 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		838CA666152DB08F0013C064 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830EF948153881B100394C57 /* libTipiOSX.a in Frameworks */,
 				838CA68E152DB6920013C064 /* libicucore.dylib in Frameworks */,
 				838CA66E152DB08F0013C064 /* Foundation.framework in Frameworks */,
 			);
@@ -145,6 +213,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830EF8EC153880A100394C57 /* TipiOS */ = {
+			isa = PBXGroup;
+			children = (
+				830EF8EF153880A100394C57 /* TipiOS.h */,
+				830EF8F0153880A100394C57 /* TipiOS.m */,
+				830EF8ED153880A100394C57 /* Supporting Files */,
+			);
+			path = TipiOS;
+			sourceTree = "<group>";
+		};
+		830EF8ED153880A100394C57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				830EF8EE153880A100394C57 /* TipiOS-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		830EF9131538811400394C57 /* TipiTest */ = {
+			isa = PBXGroup;
+			children = (
+				838CA670152DB08F0013C064 /* main.m */,
+				838CA674152DB08F0013C064 /* Tipi.1 */,
+				838CA672152DB08F0013C064 /* Supporting Files */,
+			);
+			name = TipiTest;
+			path = Tipi;
+			sourceTree = "<group>";
+		};
+		830EF91B1538816300394C57 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				830EF91C1538816300394C57 /* AppKit.framework */,
+				830EF91D1538816300394C57 /* CoreData.framework */,
+				830EF91E1538816300394C57 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		830EF91F1538816300394C57 /* TipiOSX */ = {
+			isa = PBXGroup;
+			children = (
+				830EF9221538816300394C57 /* TipiOSX.h */,
+				830EF9231538816300394C57 /* TipiOSX.m */,
+				830EF9201538816300394C57 /* Supporting Files */,
+			);
+			path = TipiOSX;
+			sourceTree = "<group>";
+		};
+		830EF9201538816300394C57 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				830EF9211538816300394C57 /* TipiOSX-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		831A8D1C153329DF00E36646 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +315,12 @@
 		838CA65E152DB08F0013C064 = {
 			isa = PBXGroup;
 			children = (
+				830EF9281538816D00394C57 /* libicucore.dylib */,
 				838CA66F152DB08F0013C064 /* Tipi */,
+				831A8D1C153329DF00E36646 /* Tests */,
+				830EF9131538811400394C57 /* TipiTest */,
+				830EF8EC153880A100394C57 /* TipiOS */,
+				830EF91F1538816300394C57 /* TipiOSX */,
 				838CA66C152DB08F0013C064 /* Frameworks */,
 				838CA66A152DB08F0013C064 /* Products */,
 			);
@@ -199,7 +329,9 @@
 		838CA66A152DB08F0013C064 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				838CA669152DB08F0013C064 /* Tipi */,
+				838CA669152DB08F0013C064 /* TipiTest */,
+				830EF8EA153880A100394C57 /* libTipiOS.a */,
+				830EF9181538816300394C57 /* libTipiOSX.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,6 +341,8 @@
 			children = (
 				838CA68D152DB6920013C064 /* libicucore.dylib */,
 				838CA66D152DB08F0013C064 /* Foundation.framework */,
+				830EF9191538816300394C57 /* Cocoa.framework */,
+				830EF91B1538816300394C57 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -217,11 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				831A8D2C15332D8D00E36646 /* README.md */,
-				831A8D1C153329DF00E36646 /* Tests */,
 				838CA67B152DB0BF0013C064 /* Tipi */,
-				838CA670152DB08F0013C064 /* main.m */,
-				838CA674152DB08F0013C064 /* Tipi.1 */,
-				838CA672152DB08F0013C064 /* Supporting Files */,
 			);
 			path = Tipi;
 			sourceTree = "<group>";
@@ -339,10 +469,61 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		830EF8E8153880A100394C57 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		830EF9161538816300394C57 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		838CA668152DB08F0013C064 /* Tipi */ = {
+		830EF8E9153880A100394C57 /* TipiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 838CA678152DB08F0013C064 /* Build configuration list for PBXNativeTarget "Tipi" */;
+			buildConfigurationList = 830EF8F4153880A100394C57 /* Build configuration list for PBXNativeTarget "TipiOS" */;
+			buildPhases = (
+				830EF8E6153880A100394C57 /* Sources */,
+				830EF8E7153880A100394C57 /* Frameworks */,
+				830EF8E8153880A100394C57 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TipiOS;
+			productName = TipiOS;
+			productReference = 830EF8EA153880A100394C57 /* libTipiOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		830EF9171538816300394C57 /* TipiOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 830EF9251538816300394C57 /* Build configuration list for PBXNativeTarget "TipiOSX" */;
+			buildPhases = (
+				830EF9141538816300394C57 /* Sources */,
+				830EF9151538816300394C57 /* Frameworks */,
+				830EF9161538816300394C57 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TipiOSX;
+			productName = TipiOSX;
+			productReference = 830EF9181538816300394C57 /* libTipiOSX.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		838CA668152DB08F0013C064 /* TipiTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 838CA678152DB08F0013C064 /* Build configuration list for PBXNativeTarget "TipiTest" */;
 			buildPhases = (
 				838CA665152DB08F0013C064 /* Sources */,
 				838CA666152DB08F0013C064 /* Frameworks */,
@@ -352,9 +533,9 @@
 			);
 			dependencies = (
 			);
-			name = Tipi;
+			name = TipiTest;
 			productName = Tipi;
-			productReference = 838CA669152DB08F0013C064 /* Tipi */;
+			productReference = 838CA669152DB08F0013C064 /* TipiTest */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -378,52 +559,148 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				838CA668152DB08F0013C064 /* Tipi */,
+				838CA668152DB08F0013C064 /* TipiTest */,
+				830EF8E9153880A100394C57 /* TipiOS */,
+				830EF9171538816300394C57 /* TipiOSX */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		830EF8E6153880A100394C57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830EF8F6153880E000394C57 /* amalloc.c in Sources */,
+				830EF8F7153880E000394C57 /* basename.c in Sources */,
+				830EF8F8153880E000394C57 /* Csio.c in Sources */,
+				830EF8F9153880E000394C57 /* css.c in Sources */,
+				830EF8FA153880E000394C57 /* docheader.c in Sources */,
+				830EF8FB153880E000394C57 /* dumptree.c in Sources */,
+				830EF8FC153880E000394C57 /* emmatch.c in Sources */,
+				830EF8FD153880E000394C57 /* flags.c in Sources */,
+				830EF8FE153880E000394C57 /* generate.c in Sources */,
+				830EF8FF153880E000394C57 /* html5.c in Sources */,
+				830EF900153880E000394C57 /* markdown.c in Sources */,
+				830EF901153880E000394C57 /* mkdio.c in Sources */,
+				830EF902153880E000394C57 /* resource.c in Sources */,
+				830EF903153880E000394C57 /* setup.c in Sources */,
+				830EF904153880E000394C57 /* tags.c in Sources */,
+				830EF905153880E000394C57 /* toc.c in Sources */,
+				830EF906153880E000394C57 /* xml.c in Sources */,
+				830EF907153880E000394C57 /* xmlpage.c in Sources */,
+				830EF908153880E000394C57 /* discountWrapper.m in Sources */,
+				830EF909153880E000394C57 /* markdownWrapper.c in Sources */,
+				830EF90A153880E000394C57 /* mkdioWrapper.c in Sources */,
+				830EF90B153880E000394C57 /* RegexKitLite.m in Sources */,
+				830EF90C153880E000394C57 /* NSString+Tipi.m in Sources */,
+				830EF90D153880E000394C57 /* NSArray+Tipi.m in Sources */,
+				830EF90E153880E000394C57 /* TPDataParser.m in Sources */,
+				830EF90F153880E000394C57 /* TPTextDataParser.m in Sources */,
+				830EF910153880E000394C57 /* TPMarkdownDataParser.m in Sources */,
+				830EF911153880E000394C57 /* TPTemplateParser.m in Sources */,
+				830EF912153880E000394C57 /* TPTemplateNode.m in Sources */,
+				830EF8F1153880A100394C57 /* TipiOS.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		830EF9141538816300394C57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830EF92A1538818600394C57 /* amalloc.c in Sources */,
+				830EF92B1538818600394C57 /* basename.c in Sources */,
+				830EF92C1538818600394C57 /* Csio.c in Sources */,
+				830EF92D1538818600394C57 /* css.c in Sources */,
+				830EF92E1538818600394C57 /* docheader.c in Sources */,
+				830EF92F1538818600394C57 /* dumptree.c in Sources */,
+				830EF9301538818600394C57 /* emmatch.c in Sources */,
+				830EF9311538818600394C57 /* flags.c in Sources */,
+				830EF9321538818600394C57 /* generate.c in Sources */,
+				830EF9331538818600394C57 /* html5.c in Sources */,
+				830EF9341538818600394C57 /* markdown.c in Sources */,
+				830EF9351538818600394C57 /* mkdio.c in Sources */,
+				830EF9361538818600394C57 /* resource.c in Sources */,
+				830EF9371538818600394C57 /* setup.c in Sources */,
+				830EF9381538818600394C57 /* tags.c in Sources */,
+				830EF9391538818600394C57 /* toc.c in Sources */,
+				830EF93A1538818600394C57 /* xml.c in Sources */,
+				830EF93B1538818600394C57 /* xmlpage.c in Sources */,
+				830EF93C1538818600394C57 /* discountWrapper.m in Sources */,
+				830EF93D1538818600394C57 /* markdownWrapper.c in Sources */,
+				830EF93E1538818600394C57 /* mkdioWrapper.c in Sources */,
+				830EF93F1538818600394C57 /* RegexKitLite.m in Sources */,
+				830EF9401538818600394C57 /* NSString+Tipi.m in Sources */,
+				830EF9411538818600394C57 /* NSArray+Tipi.m in Sources */,
+				830EF9421538818600394C57 /* TPDataParser.m in Sources */,
+				830EF9431538818600394C57 /* TPTextDataParser.m in Sources */,
+				830EF9441538818600394C57 /* TPMarkdownDataParser.m in Sources */,
+				830EF9451538818600394C57 /* TPTemplateParser.m in Sources */,
+				830EF9461538818600394C57 /* TPTemplateNode.m in Sources */,
+				830EF9241538816300394C57 /* TipiOSX.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		838CA665152DB08F0013C064 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				838CA671152DB08F0013C064 /* main.m in Sources */,
-				838CA67E152DB0DA0013C064 /* TPDataParser.m in Sources */,
-				838CA681152DB11E0013C064 /* TPTextDataParser.m in Sources */,
-				838CA689152DB55C0013C064 /* NSString+Tipi.m in Sources */,
-				838CA68C152DB59F0013C064 /* RegexKitLite.m in Sources */,
-				838CA691152DB7BB0013C064 /* TPMarkdownDataParser.m in Sources */,
-				838CA705152DB8A10013C064 /* amalloc.c in Sources */,
-				838CA706152DB8A10013C064 /* basename.c in Sources */,
-				838CA708152DB8A10013C064 /* Csio.c in Sources */,
-				838CA709152DB8A10013C064 /* css.c in Sources */,
-				838CA70A152DB8A10013C064 /* docheader.c in Sources */,
-				838CA70B152DB8A10013C064 /* dumptree.c in Sources */,
-				838CA70C152DB8A10013C064 /* emmatch.c in Sources */,
-				838CA70D152DB8A10013C064 /* flags.c in Sources */,
-				838CA70E152DB8A10013C064 /* generate.c in Sources */,
-				838CA70F152DB8A10013C064 /* html5.c in Sources */,
-				838CA712152DB8A10013C064 /* markdown.c in Sources */,
-				838CA714152DB8A10013C064 /* mkdio.c in Sources */,
-				838CA715152DB8A10013C064 /* resource.c in Sources */,
-				838CA716152DB8A10013C064 /* setup.c in Sources */,
-				838CA717152DB8A10013C064 /* tags.c in Sources */,
-				838CA719152DB8A10013C064 /* toc.c in Sources */,
-				838CA71C152DB8A10013C064 /* xml.c in Sources */,
-				838CA71D152DB8A10013C064 /* xmlpage.c in Sources */,
-				838CA71E152DB8A10013C064 /* discountWrapper.m in Sources */,
-				838CA71F152DB8A10013C064 /* markdownWrapper.c in Sources */,
-				838CA720152DB8A10013C064 /* mkdioWrapper.c in Sources */,
-				838CA726152DBEEB0013C064 /* TPTemplateParser.m in Sources */,
-				838CA729152DC02D0013C064 /* TPTemplateNode.m in Sources */,
-				83DC137015305157005FCB72 /* NSArray+Tipi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		830EF8F2153880A100394C57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/TipiOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipiOS/TipiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		830EF8F3153880A100394C57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/TipiOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipiOS/TipiOS-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		830EF9261538816300394C57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipiOSX/TipiOSX-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		830EF9271538816300394C57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TipiOSX/TipiOSX-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		838CA676152DB08F0013C064 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -477,6 +754,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tipi/Tipi-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Discount/**";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -487,6 +765,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tipi/Tipi-Prefix.pch";
 				HEADER_SEARCH_PATHS = "Discount/**";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -494,6 +773,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		830EF8F4153880A100394C57 /* Build configuration list for PBXNativeTarget "TipiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				830EF8F2153880A100394C57 /* Debug */,
+				830EF8F3153880A100394C57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		830EF9251538816300394C57 /* Build configuration list for PBXNativeTarget "TipiOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				830EF9261538816300394C57 /* Debug */,
+				830EF9271538816300394C57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		838CA663152DB08F0013C064 /* Build configuration list for PBXProject "Tipi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -503,7 +798,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		838CA678152DB08F0013C064 /* Build configuration list for PBXNativeTarget "Tipi" */ = {
+		838CA678152DB08F0013C064 /* Build configuration list for PBXNativeTarget "TipiTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				838CA679152DB08F0013C064 /* Debug */,
