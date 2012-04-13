@@ -32,12 +32,12 @@
 	
 	if( self.type == TPNodeText ) {
 		description = [NSMutableString stringWithFormat:@"%@<Text> '%@'\n", 
-					   [NSString stringByCreatingWhitespaceOfLength:depth],
+					   [NSString tp_stringByCreatingWhitespaceOfLength:depth],
 					   [self.originalValue stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]];
 	}
 	else {
 		description = [NSMutableString stringWithFormat:@"%@<Node> %@(%@)\n", 
-					   [NSString stringByCreatingWhitespaceOfLength:depth],
+					   [NSString tp_stringByCreatingWhitespaceOfLength:depth],
 					   self.name,
 					   [values componentsJoinedByString:@", "]];
 	}

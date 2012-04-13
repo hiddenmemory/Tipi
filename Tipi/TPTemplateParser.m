@@ -233,7 +233,7 @@
 - (NSString*)nextToken:(NSMutableString*)stream {
 	NSString *nextToken = @"";
 	
-	NSString *stringToParse = [stream stringByTrimmingWhitespace];
+	NSString *stringToParse = [stream tp_stringByTrimmingWhitespace];
 	
 	if( [stringToParse hasPrefix:@"\""] || [stringToParse hasPrefix:@"'"] ) {
 		// If we match a comment character, match until the next non-escaped version, otherwise until end of the string
@@ -287,7 +287,7 @@
 			node.originalValue = [content substringToIndex:tagContentRange.location + tagEnd.length];
 			
 			NSMutableArray *parts = [NSMutableArray array];
-			NSMutableString *stringToParse = [NSMutableString stringWithString:[node.originalValue removePrefix:tagStart suffix:tagEnd]];
+			NSMutableString *stringToParse = [NSMutableString stringWithString:[node.originalValue tp_stringByRemovingPrefix:tagStart suffix:tagEnd]];
 
 #define STATE_WAITING_FOR_NAME   0
 #define STATE_WAITING_FOR_EQUALS 1
@@ -349,7 +349,7 @@
 					[parts removeObjectAtIndex:0];
 				}
 				else {
-					[parts replaceObjectAtIndex:0 withObject:[[parts objectAtIndex:0] removePrefix:tagBlockOpen suffix:nil]];
+					[parts replaceObjectAtIndex:0 withObject:[[parts objectAtIndex:0] tp_stringByRemovingPrefix:tagBlockOpen suffix:nil]];
 				}
 				
 				node.type = TPNodeDefinition;

@@ -56,7 +56,7 @@
 		}
 		
 		for( NSString *key in [_values allKeys] ) {
-			[_values setObject:[[_values objectForKey:key] stringByTrimmingWhitespace] forKey:key];
+			[_values setObject:[[_values objectForKey:key] tp_stringByTrimmingWhitespace] forKey:key];
 		}
 	}
 	return self;

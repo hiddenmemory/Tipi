@@ -9,24 +9,9 @@
 #import "NSString+Tipi.h"
 #import "RegexKitLite.h"
 
-@implementation NSString (HiddenMemory)
+@implementation NSString (Tipi)
 
-+ (NSString*)bytesToHuman:(size_t)value {
-	if( value < 1024 ) {
-		return [NSString stringWithFormat:@"%db", value];
-	}
-	else if( value < (1024*(1024*10)) ) {
-		return [NSString stringWithFormat:@"%dKb", (value / 1024)];
-	}
-	else if( value < (1024*1024*1024) ) {
-		return [NSString stringWithFormat:@"%dMb", (value / (1024*1024))];
-	}
-	else 
-		return [NSString stringWithFormat:@"%fGb", (value / (1024*1024*1024.0))];
-	return @"";
-}
-
-- (NSString *)stringByEncodingXMLEntities {
+- (NSString *)tp_stringByEncodingXMLEntities {
 	// Scanner
 	NSScanner *scanner = [[NSScanner alloc] initWithString:self];
 	[scanner setCharactersToBeSkipped:nil];
@@ -62,14 +47,14 @@
 	return retString;
 }
 
-- (BOOL)isURL {
+- (BOOL)tp_isURL {
 	if( [self length] > 0 && 
 		([self rangeOfString:@"http://"].location == 0 || [self rangeOfString:@"https://"].location == 0) ) {
         return YES;
     }
     return NO;
 }
-- (NSArray*)listOfURLS {
+- (NSArray*)tp_listOfURLS {
 	NSString *url = @"(?i)\\b((?:[a-z][\\w-]+:(?:/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))";
 	NSMutableArray *urls = nil;
 	
@@ -85,122 +70,10 @@
 	return urls;
 }
 
-- (NSComparisonResult)emojiiLengthCompare:(NSString*)other {
-	if( [self length] < [other length] ) {
-		return NSOrderedDescending;
-	}
-	else if( [self length] > [other length] ) {
-		return NSOrderedAscending;
-	}
-	return NSOrderedSame;
+- (NSString*)tp_tagWithAttribute:(NSString*)key value:(NSString*)value content:(id(^)())content {
+	return [self tp_tagWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:value, key, nil] content:content];
 }
-
-+ (NSArray*)emojiTransformMapOrdered {
-    NSArray *transformMap = [NSArray arrayWithObjects:
-                             @"\ue056", 
-                             @"\ue416", 
-                             @"\ue059", 
-                             @"\ue40d",
-                             @"\ue105",
-                             @"\ue413",
-                             @"\ue415",
-                             @"\ue11a",
-                             @"\ue410",
-                             @"\ue417",
-                             @"\ue418",
-                             @"\ue022",
-                             @"\ue406", 
-                             @"\ue414", 
-                             @"\ue020", 
-                             @"\ue12b", 
-                             @"\ue057",                             
-                             nil];
-    return transformMap;
-}
-
-+ (NSDictionary*)emojiTransformMap {
-    NSDictionary *transformMap = [NSDictionary dictionaryWithObjectsAndKeys:
-								  @"\ue056", @":-)",
-								  @"\ue056", @":)",
-								  @"\ue056", @":]",
-								  @"\ue056", @"=)",
-								  @"\ue416", @">:(",
-								  @"\ue416", @">:-(",
-								  @"\ue059", @":-(",
-								  @"\ue059", @":(",
-								  @"\ue059", @":[", 
-								  @"\ue059", @"=(",
-								  @"\ue40d", @":/",
-								  @"\ue40d", @":-/",
-								  @"\ue40d", @":\\",
-								  @"\ue40d", @":-\\",
-								  @"\ue105", @":-P",
-								  @"\ue105", @":P",
-								  @"\ue105", @"=P",
-								  @"\ue413", @":'(",
-								  @"\ue415", @":-D",
-								  @"\ue415", @":D",
-								  @"\ue415", @"=D",
-								  @"\ue11a", @"3:)",
-								  @"\ue11a", @"3:-)",
-								  @"\ue410", @":-O",
-								  @"\ue410", @":O",
-								  @"\ue417", @":3",
-								  @"\ue405", @";)",
-								  @"\ue405", @";-)",
-								  @"\ue418", @":-*",
-								  @"\ue418", @":*",
-								  @"\ue022", @"<3",
-								  @"\ue415", @"^_^",
-								  @"\ue406", @">:O",
-								  @"\ue406", @">:-O",
-								  @"\ue414", @"-_-",
-								  @"\ue020", @"O.o",
-								  @"\ue12b", @":|]",
-								  
-								  @"\ue057", @"8-)",
-								  @"\ue057", @"8)",
-								  @"\ue057", @"B-)",
-								  @"\ue057", @"B)",
-								  @"\ue057", @"8-|",
-								  @"\ue057", @"8|",
-								  @"\ue057", @"B-|",
-								  @"\ue057", @"B|",
-								  
-								  // @"pacman",   @":v",
-								  // @"angel",    @"O:)",
-								  // @"angel",    @"O:-)",
-								  
-								  nil];
-
-    return transformMap;
-}
-
-+ (NSString*)stringByTransformingToEmoji:(NSString*)_transform {
-	NSMutableString *transform = [NSMutableString stringWithString:_transform];
-	
-    NSDictionary *transformMap = [NSString emojiTransformMap];
-		
-	NSArray *emoticons = [[transformMap allKeys] sortedArrayUsingSelector:@selector(emojiiLengthCompare:)];
-	
-	if( [transform rangeOfString:@" "].location != NSNotFound ) {
-		for( NSString *emoticon in emoticons ) {
-			[transform replaceOccurrencesOfString:[NSString stringWithFormat:@" %@", emoticon]
-									   withString:[transformMap objectForKey:emoticon]
-										  options:NSCaseInsensitiveSearch
-											range:NSMakeRange(0, [transform length])];
-		}
-	}
-	else if( [transformMap objectForKey:transform] ) {
-		return [transformMap objectForKey:transform];
-	}
-	return transform;
-}
-
-- (NSString*)tagWithAttribute:(NSString*)key value:(NSString*)value content:(id(^)())content {
-	return [self tagWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:value, key, nil] content:content];
-}
-- (NSString*)tagWithAttributes:(NSDictionary*)values content:(id(^)())content {
+- (NSString*)tp_tagWithAttributes:(NSDictionary*)values content:(id(^)())content {
 	NSString *attributeString = @"";
 	NSString *contentString = content();
 	
@@ -220,38 +93,41 @@
 			self];
 }
 
-- (NSString*)tagWithAttribute:(NSString*)key value:(NSString*)value body:(NSString*)content {
-    return [self tagWithAttribute:key value:value content:^id() {
+- (NSString*)tp_tagWithAttribute:(NSString*)key value:(NSString*)value body:(NSString*)content {
+    return [self tp_tagWithAttribute:key value:value content:^id() {
         return content;
     }];
 }
 
-- (NSString*)tagWithAttributes:(NSDictionary*)values body:(NSString*)content {
-    return [self tagWithAttributes:values content:^id() {
+- (NSString*)tp_tagWithAttributes:(NSDictionary*)values body:(NSString*)content {
+    return [self tp_tagWithAttributes:values content:^id() {
         return content;
     }];
 }
 
-- (NSString*)escapeHTML {
+- (NSString*)tp_escapeHTML {
 	NSMutableString *target = [NSMutableString stringWithString:self];
 	[target replaceOccurrencesOfString:@"&" withString:@"&amp;" options:NSLiteralSearch range:NSMakeRange(0, [target length])];
 	[target replaceOccurrencesOfString:@"<" withString:@"&lt;" options:NSLiteralSearch range:NSMakeRange(0, [target length])];
 	[target replaceOccurrencesOfString:@">" withString:@"&gt;" options:NSLiteralSearch range:NSMakeRange(0, [target length])];
 	return target;
 }
-- (NSString*)stringByAddingHTMLFormattingToPlainCharacters {
+- (NSString*)tp_stringByAddingHTMLFormattingToPlainCharacters {
 	NSMutableString *target = [NSMutableString stringWithString:self];
-	[target replaceOccurrencesOfString:@"\n" withString:@"<br />\n" options:NSLiteralSearch range:NSMakeRange(0, [target length])];
+	[target replaceOccurrencesOfString:@"\n" 
+							withString:@"<br />\n" 
+							   options:NSLiteralSearch 
+								 range:NSMakeRange(0, [target length])];
 	return target;
 }
 
-- (NSString*)stringByUppercasingFirstCharacter {
+- (NSString*)tp_stringByUppercasingFirstCharacter {
     if( [self length] ) {
         return [NSString stringWithFormat:@"%@%@", [[self substringToIndex:1] uppercaseString], [self substringFromIndex:1]];
     }
     return self;
 }
-- (NSString*)stringByExpandingTokensInDictionary:(NSDictionary*)tokens {
+- (NSString*)tp_stringByExpandingTokensInDictionary:(NSDictionary*)tokens {
     NSString *contents = self;
     if( tokens ) {
         for( NSString *key in [tokens allKeys] ) {
@@ -262,19 +138,19 @@
 	return contents;
 }
 
-+ (NSString*)stringByExpandingFormat:(NSString*)format withTokens:(NSDictionary*)tokens {
-    return [format stringByExpandingTokensInDictionary:tokens];
++ (NSString*)tp_stringByExpandingFormat:(NSString*)format withTokens:(NSDictionary*)tokens {
+    return [format tp_stringByExpandingTokensInDictionary:tokens];
 }
 
-+ (NSString*)stringByCreatingWhitespaceOfLength:(NSInteger)length {
++ (NSString*)tp_stringByCreatingWhitespaceOfLength:(NSInteger)length {
 	return [@"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" substringToIndex:length];
 }
 
-- (NSString*)stringByTrimmingWhitespace {
+- (NSString*)tp_stringByTrimmingWhitespace {
 	return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSString*)removePrefix:(NSString*)prefix suffix:(NSString*)suffix {
+- (NSString*)tp_stringByRemovingPrefix:(NSString*)prefix suffix:(NSString*)suffix {
 	NSString *str = self;
 	
 	if( prefix && [str hasPrefix:prefix] ) {

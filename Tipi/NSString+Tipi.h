@@ -11,35 +11,27 @@
 
 @interface NSString (Tipi)
 
-+ (NSString*)bytesToHuman:(size_t)value;
+- (NSString *)tp_stringByEncodingXMLEntities;
 
-+ (NSString*)stringByTransformingToEmoji:(NSString*)_transform;
-+ (NSDictionary*)emojiTransformMap;
-+ (NSArray*)emojiTransformMapOrdered;
+- (NSArray*)tp_listOfURLS;
+- (BOOL)tp_isURL;
 
-- (NSString *)stringByEncodingXMLEntities;
+- (NSString*)tp_tagWithAttribute:(NSString*)key value:(NSString*)value content:(id(^)())content;
+- (NSString*)tp_tagWithAttributes:(NSDictionary*)values content:(id(^)())content;
 
-- (NSArray*)listOfURLS;
-- (BOOL)isURL;
+- (NSString*)tp_tagWithAttribute:(NSString*)key value:(NSString*)value body:(NSString*)content;
+- (NSString*)tp_tagWithAttributes:(NSDictionary*)values body:(NSString*)content;
 
-- (NSComparisonResult)emojiiLengthCompare:(NSString*)other;
+- (NSString*)tp_escapeHTML;
+- (NSString*)tp_stringByAddingHTMLFormattingToPlainCharacters;
+- (NSString*)tp_stringByUppercasingFirstCharacter;
+- (NSString*)tp_stringByExpandingTokensInDictionary:(NSDictionary*)tokens;
 
-- (NSString*)tagWithAttribute:(NSString*)key value:(NSString*)value content:(id(^)())content;
-- (NSString*)tagWithAttributes:(NSDictionary*)values content:(id(^)())content;
++ (NSString*)tp_stringByExpandingFormat:(NSString*)format withTokens:(NSDictionary*)tokens;
 
-- (NSString*)tagWithAttribute:(NSString*)key value:(NSString*)value body:(NSString*)content;
-- (NSString*)tagWithAttributes:(NSDictionary*)values body:(NSString*)content;
++ (NSString*)tp_stringByCreatingWhitespaceOfLength:(NSInteger)length;
+- (NSString*)tp_stringByTrimmingWhitespace;
 
-- (NSString*)escapeHTML;
-- (NSString*)stringByAddingHTMLFormattingToPlainCharacters;
-- (NSString*)stringByUppercasingFirstCharacter;
-- (NSString*)stringByExpandingTokensInDictionary:(NSDictionary*)tokens;
-
-+ (NSString*)stringByExpandingFormat:(NSString*)format withTokens:(NSDictionary*)tokens;
-
-+ (NSString*)stringByCreatingWhitespaceOfLength:(NSInteger)length;
-- (NSString*)stringByTrimmingWhitespace;
-
-- (NSString*)removePrefix:(NSString*)prefix suffix:(NSString*)suffix;
+- (NSString*)tp_stringByRemovingPrefix:(NSString*)prefix suffix:(NSString*)suffix;
 
 @end

@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "838CA668152DB08F0013C064"
-               BuildableName = "Tipi"
-               BlueprintName = "Tipi"
+               BuildableName = "TipiTest"
+               BlueprintName = "TipiTest"
                ReferencedContainer = "container:Tipi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "838CA668152DB08F0013C064"
-            BuildableName = "Tipi"
-            BlueprintName = "Tipi"
+            BuildableName = "TipiTest"
+            BlueprintName = "TipiTest"
             ReferencedContainer = "container:Tipi.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "838CA668152DB08F0013C064"
-            BuildableName = "Tipi"
-            BlueprintName = "Tipi"
+            BuildableName = "TipiTest"
+            BlueprintName = "TipiTest"
             ReferencedContainer = "container:Tipi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "838CA668152DB08F0013C064"
-            BuildableName = "Tipi"
-            BlueprintName = "Tipi"
+            BuildableName = "TipiTest"
+            BlueprintName = "TipiTest"
             ReferencedContainer = "container:Tipi.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
