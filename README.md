@@ -340,7 +340,7 @@ This product includes software developed by:
 
  - David Loren Parsons - <http://www.pell.portland.or.us/~orc>
  - Jonathan 'Wolf' Rentzsch - <https://github.com/rentzsch/markdownlive>
-
+ - John Engelhart - Copyright (c) 2008-2010 - RegexKitLite
 
 [Dave Gurnell]: http://boxandarrow.com
 [Chris Ross]: http://darkrock.co.uk
