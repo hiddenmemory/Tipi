@@ -231,14 +231,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		830EF9131538811400394C57 /* TipiTest */ = {
+		830EF9131538811400394C57 /* TipiTestHarness */ = {
 			isa = PBXGroup;
 			children = (
 				838CA670152DB08F0013C064 /* main.m */,
 				838CA674152DB08F0013C064 /* Tipi.1 */,
 				838CA672152DB08F0013C064 /* Supporting Files */,
 			);
-			name = TipiTest;
+			name = TipiTestHarness;
 			path = Tipi;
 			sourceTree = "<group>";
 		};
@@ -270,13 +270,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		831A8D1C153329DF00E36646 /* Tests */ = {
+		831A8D1C153329DF00E36646 /* TipiTests */ = {
 			isa = PBXGroup;
 			children = (
 				831A8D2B153329DF00E36646 /* README.md */,
 				831A8D2D15333F2B00E36646 /* import */,
 				831A8D1E153329DF00E36646 /* basic */,
 			);
+			name = TipiTests;
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -315,10 +316,9 @@
 		838CA65E152DB08F0013C064 = {
 			isa = PBXGroup;
 			children = (
-				830EF9281538816D00394C57 /* libicucore.dylib */,
-				838CA66F152DB08F0013C064 /* Tipi */,
-				831A8D1C153329DF00E36646 /* Tests */,
-				830EF9131538811400394C57 /* TipiTest */,
+				838CA66F152DB08F0013C064 /* TipiCore */,
+				831A8D1C153329DF00E36646 /* TipiTests */,
+				830EF9131538811400394C57 /* TipiTestHarness */,
 				830EF8EC153880A100394C57 /* TipiOS */,
 				830EF91F1538816300394C57 /* TipiOSX */,
 				838CA66C152DB08F0013C064 /* Frameworks */,
@@ -339,6 +339,7 @@
 		838CA66C152DB08F0013C064 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				830EF9281538816D00394C57 /* libicucore.dylib */,
 				838CA68D152DB6920013C064 /* libicucore.dylib */,
 				838CA66D152DB08F0013C064 /* Foundation.framework */,
 				830EF9191538816300394C57 /* Cocoa.framework */,
@@ -347,12 +348,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		838CA66F152DB08F0013C064 /* Tipi */ = {
+		838CA66F152DB08F0013C064 /* TipiCore */ = {
 			isa = PBXGroup;
 			children = (
 				831A8D2C15332D8D00E36646 /* README.md */,
 				838CA67B152DB0BF0013C064 /* Tipi */,
 			);
+			name = TipiCore;
 			path = Tipi;
 			sourceTree = "<group>";
 		};
