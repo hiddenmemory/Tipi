@@ -14,6 +14,11 @@
 @property (readonly) TPTemplateNode *root;
 @property (readonly) NSString *sourcePath;
 
+@property (strong) NSString *tagStart;
+@property (strong) NSString *tagBlockOpen;
+@property (strong) NSString *tagBlockClose;
+@property (strong) NSString *tagEnd;
+
 + (TPTemplateParser*)parserForFile:(NSString*)path;
 
 - (NSString*)expansion;

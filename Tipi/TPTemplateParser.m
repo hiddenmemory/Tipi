@@ -31,6 +31,8 @@
 
 @implementation TPTemplateParser
 @synthesize root, sourcePath;
+@synthesize tagStart, tagEnd, tagBlockOpen, tagBlockClose;
+
 + (TPTemplateParser*)parserForFile:(NSString*)path {
 	return [[[self class] alloc] initWithFileAtPath:path];
 }
