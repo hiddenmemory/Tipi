@@ -30,7 +30,7 @@
 @end
 
 @implementation TPTemplateParser
-@synthesize root;
+@synthesize root, sourcePath;
 + (TPTemplateParser*)parserForFile:(NSString*)path {
 	return [[[self class] alloc] initWithFileAtPath:path];
 }
@@ -71,13 +71,17 @@
 	
 	return value;
 }
+- (NSString*)locateImport:(NSString*)name {
+	return [NSString stringWithFormat:@"%@/%@", sourcePath, name];
+}
 - (NSString*)expansionUsingImportEnvironment:(NSDictionary*)values {
-	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:values];
+	NSMutableDictionary *environment = [NSMutableDictionary dictionaryWithDictionary:(values ? values : [NSDictionary dictionary])];
 	
 	id importBlock = ^NSString*( TPTemplateNode *node, NSMutableDictionary *environment ) {
-		NSString *importPath = [NSString stringWithFormat:@"%@/%@", sourcePath, [node.valuesMap objectForKey:@"source"]];
+		NSString *importPath = [self locateImport:[node.valuesMap objectForKey:@"source"]];
 
 		if( [[NSFileManager defaultManager] fileExistsAtPath:importPath] ) {
+			NSLog(@"Importing: %@", importPath);
 			TPTemplateParser *importParser = [TPTemplateParser parserForFile:importPath];
 			return [importParser.root expansionUsingEnvironment:environment];
 		}

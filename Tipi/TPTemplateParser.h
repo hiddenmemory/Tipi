@@ -12,11 +12,14 @@
 
 @interface TPTemplateParser : NSObject
 @property (readonly) TPTemplateNode *root;
+@property (readonly) NSString *sourcePath;
 
 + (TPTemplateParser*)parserForFile:(NSString*)path;
 
 - (NSString*)expansion;
 - (NSString*)expansionUsingEnvironment:(NSDictionary*)values;
 - (NSString*)expansionUsingImportEnvironment:(NSDictionary*)values;
+
+- (NSString*)locateImport:(NSString*)name;
 
 @end
