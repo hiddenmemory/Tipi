@@ -7,67 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A416103E4303B81D677D826 /* TPBlockWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A416221FFB77230650E2B2B /* TPBlockWrapper.h */; };
+		5A41628327B81B8959C1BA00 /* TPBlockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A416F6471E7A248160B748C /* TPBlockWrapper.m */; };
+		5A4166C9336A7F05B2626C8C /* TPBlockWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A416221FFB77230650E2B2B /* TPBlockWrapper.h */; };
+		5A4167D3B0B6B460B37343AC /* TPBlockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A416F6471E7A248160B748C /* TPBlockWrapper.m */; };
+		5A416EEA41A25FD3AC8A1BA1 /* TPBlockWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A416F6471E7A248160B748C /* TPBlockWrapper.m */; };
+		5A416FEAFC3A359105A1A070 /* NSDictionary+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4167AEC4D5A1D6970F0676 /* NSDictionary+Tipi.m */; };
 		830EF8EB153880A100394C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA66D152DB08F0013C064 /* Foundation.framework */; };
 		830EF8F1153880A100394C57 /* TipiOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EF8F0153880A100394C57 /* TipiOS.m */; };
-		830EF8F6153880E000394C57 /* amalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA694152DB8A10013C064 /* amalloc.c */; };
-		830EF8F7153880E000394C57 /* basename.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA696152DB8A10013C064 /* basename.c */; };
-		830EF8F8153880E000394C57 /* Csio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69B152DB8A10013C064 /* Csio.c */; };
-		830EF8F9153880E000394C57 /* css.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69C152DB8A10013C064 /* css.c */; };
-		830EF8FA153880E000394C57 /* docheader.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69E152DB8A10013C064 /* docheader.c */; };
-		830EF8FB153880E000394C57 /* dumptree.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69F152DB8A10013C064 /* dumptree.c */; };
-		830EF8FC153880E000394C57 /* emmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A0152DB8A10013C064 /* emmatch.c */; };
-		830EF8FD153880E000394C57 /* flags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A1152DB8A10013C064 /* flags.c */; };
-		830EF8FE153880E000394C57 /* generate.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A2152DB8A10013C064 /* generate.c */; };
-		830EF8FF153880E000394C57 /* html5.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A3152DB8A10013C064 /* html5.c */; };
-		830EF900153880E000394C57 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6AC152DB8A10013C064 /* markdown.c */; };
-		830EF901153880E000394C57 /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6B4152DB8A10013C064 /* mkdio.c */; };
-		830EF902153880E000394C57 /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BD152DB8A10013C064 /* resource.c */; };
-		830EF903153880E000394C57 /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BE152DB8A10013C064 /* setup.c */; };
-		830EF904153880E000394C57 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BF152DB8A10013C064 /* tags.c */; };
-		830EF905153880E000394C57 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6EF152DB8A10013C064 /* toc.c */; };
-		830EF906153880E000394C57 /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F6152DB8A10013C064 /* xml.c */; };
-		830EF907153880E000394C57 /* xmlpage.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F7152DB8A10013C064 /* xmlpage.c */; };
-		830EF908153880E000394C57 /* discountWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA700152DB8A10013C064 /* discountWrapper.m */; };
-		830EF909153880E000394C57 /* markdownWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA701152DB8A10013C064 /* markdownWrapper.c */; };
-		830EF90A153880E000394C57 /* mkdioWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA703152DB8A10013C064 /* mkdioWrapper.c */; };
-		830EF90B153880E000394C57 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA68B152DB59F0013C064 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		830EF90C153880E000394C57 /* NSString+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+Tipi.m */; };
 		830EF90D153880E000394C57 /* NSArray+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC136F15305157005FCB72 /* NSArray+Tipi.m */; };
 		830EF90E153880E000394C57 /* TPDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPDataParser.m */; };
 		830EF90F153880E000394C57 /* TPTextDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA680152DB11E0013C064 /* TPTextDataParser.m */; };
-		830EF910153880E000394C57 /* TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */; };
+		830EF910153880E000394C57 /* _TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* _TPMarkdownDataParser.m */; };
 		830EF911153880E000394C57 /* TPTemplateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA725152DBEEB0013C064 /* TPTemplateParser.m */; };
 		830EF912153880E000394C57 /* TPTemplateNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA728152DC02D0013C064 /* TPTemplateNode.m */; };
 		830EF91A1538816300394C57 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830EF9191538816300394C57 /* Cocoa.framework */; };
 		830EF9241538816300394C57 /* TipiOSX.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EF9231538816300394C57 /* TipiOSX.m */; };
-		830EF9291538816D00394C57 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 830EF9281538816D00394C57 /* libicucore.dylib */; };
-		830EF92A1538818600394C57 /* amalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA694152DB8A10013C064 /* amalloc.c */; };
-		830EF92B1538818600394C57 /* basename.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA696152DB8A10013C064 /* basename.c */; };
-		830EF92C1538818600394C57 /* Csio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69B152DB8A10013C064 /* Csio.c */; };
-		830EF92D1538818600394C57 /* css.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69C152DB8A10013C064 /* css.c */; };
-		830EF92E1538818600394C57 /* docheader.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69E152DB8A10013C064 /* docheader.c */; };
-		830EF92F1538818600394C57 /* dumptree.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA69F152DB8A10013C064 /* dumptree.c */; };
-		830EF9301538818600394C57 /* emmatch.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A0152DB8A10013C064 /* emmatch.c */; };
-		830EF9311538818600394C57 /* flags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A1152DB8A10013C064 /* flags.c */; };
-		830EF9321538818600394C57 /* generate.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A2152DB8A10013C064 /* generate.c */; };
-		830EF9331538818600394C57 /* html5.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6A3152DB8A10013C064 /* html5.c */; };
-		830EF9341538818600394C57 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6AC152DB8A10013C064 /* markdown.c */; };
-		830EF9351538818600394C57 /* mkdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6B4152DB8A10013C064 /* mkdio.c */; };
-		830EF9361538818600394C57 /* resource.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BD152DB8A10013C064 /* resource.c */; };
-		830EF9371538818600394C57 /* setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BE152DB8A10013C064 /* setup.c */; };
-		830EF9381538818600394C57 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6BF152DB8A10013C064 /* tags.c */; };
-		830EF9391538818600394C57 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6EF152DB8A10013C064 /* toc.c */; };
-		830EF93A1538818600394C57 /* xml.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F6152DB8A10013C064 /* xml.c */; };
-		830EF93B1538818600394C57 /* xmlpage.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA6F7152DB8A10013C064 /* xmlpage.c */; };
-		830EF93C1538818600394C57 /* discountWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA700152DB8A10013C064 /* discountWrapper.m */; };
-		830EF93D1538818600394C57 /* markdownWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA701152DB8A10013C064 /* markdownWrapper.c */; };
-		830EF93E1538818600394C57 /* mkdioWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 838CA703152DB8A10013C064 /* mkdioWrapper.c */; };
-		830EF93F1538818600394C57 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA68B152DB59F0013C064 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		830EF9401538818600394C57 /* NSString+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA688152DB55C0013C064 /* NSString+Tipi.m */; };
 		830EF9411538818600394C57 /* NSArray+Tipi.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DC136F15305157005FCB72 /* NSArray+Tipi.m */; };
 		830EF9421538818600394C57 /* TPDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA67D152DB0DA0013C064 /* TPDataParser.m */; };
 		830EF9431538818600394C57 /* TPTextDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA680152DB11E0013C064 /* TPTextDataParser.m */; };
-		830EF9441538818600394C57 /* TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */; };
+		830EF9441538818600394C57 /* _TPMarkdownDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA690152DB7BB0013C064 /* _TPMarkdownDataParser.m */; };
 		830EF9451538818600394C57 /* TPTemplateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA725152DBEEB0013C064 /* TPTemplateParser.m */; };
 		830EF9461538818600394C57 /* TPTemplateNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA728152DC02D0013C064 /* TPTemplateNode.m */; };
 		830EF947153881A500394C57 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA68D152DB6920013C064 /* libicucore.dylib */; };
@@ -76,6 +37,7 @@
 		838CA671152DB08F0013C064 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 838CA670152DB08F0013C064 /* main.m */; };
 		838CA675152DB08F0013C064 /* Tipi.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 838CA674152DB08F0013C064 /* Tipi.1 */; };
 		838CA68E152DB6920013C064 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 838CA68D152DB6920013C064 /* libicucore.dylib */; };
+		F96D5F0267161687FDD638B3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ABF4EE43CC8652396A277BC /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,6 +54,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		50EFE6511398589916FD65D7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5A4160959D110175F06BCFB0 /* NSDictionary+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Tipi.h"; sourceTree = "<group>"; };
+		5A416221FFB77230650E2B2B /* TPBlockWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPBlockWrapper.h; sourceTree = "<group>"; };
+		5A4167AEC4D5A1D6970F0676 /* NSDictionary+Tipi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Tipi.m"; sourceTree = "<group>"; };
+		5A416F6471E7A248160B748C /* TPBlockWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPBlockWrapper.m; sourceTree = "<group>"; };
 		830EF8EA153880A100394C57 /* libTipiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTipiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		830EF8EE153880A100394C57 /* TipiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TipiOS-Prefix.pch"; sourceTree = "<group>"; };
 		830EF8EF153880A100394C57 /* TipiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipiOS.h; sourceTree = "<group>"; };
@@ -136,42 +103,9 @@
 		838CA680152DB11E0013C064 /* TPTextDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTextDataParser.m; sourceTree = "<group>"; };
 		838CA687152DB55C0013C064 /* NSString+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tipi.h"; sourceTree = "<group>"; };
 		838CA688152DB55C0013C064 /* NSString+Tipi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tipi.m"; sourceTree = "<group>"; };
-		838CA68A152DB59F0013C064 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
-		838CA68B152DB59F0013C064 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		838CA68D152DB6920013C064 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		838CA68F152DB7BA0013C064 /* TPMarkdownDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPMarkdownDataParser.h; sourceTree = "<group>"; };
-		838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPMarkdownDataParser.m; sourceTree = "<group>"; };
-		838CA694152DB8A10013C064 /* amalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = amalloc.c; sourceTree = "<group>"; };
-		838CA695152DB8A10013C064 /* amalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amalloc.h; sourceTree = "<group>"; };
-		838CA696152DB8A10013C064 /* basename.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = basename.c; sourceTree = "<group>"; };
-		838CA69B152DB8A10013C064 /* Csio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Csio.c; sourceTree = "<group>"; };
-		838CA69C152DB8A10013C064 /* css.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = css.c; sourceTree = "<group>"; };
-		838CA69D152DB8A10013C064 /* cstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cstring.h; sourceTree = "<group>"; };
-		838CA69E152DB8A10013C064 /* docheader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = docheader.c; sourceTree = "<group>"; };
-		838CA69F152DB8A10013C064 /* dumptree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dumptree.c; sourceTree = "<group>"; };
-		838CA6A0152DB8A10013C064 /* emmatch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = emmatch.c; sourceTree = "<group>"; };
-		838CA6A1152DB8A10013C064 /* flags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = flags.c; sourceTree = "<group>"; };
-		838CA6A2152DB8A10013C064 /* generate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = generate.c; sourceTree = "<group>"; };
-		838CA6A3152DB8A10013C064 /* html5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = html5.c; sourceTree = "<group>"; };
-		838CA6AC152DB8A10013C064 /* markdown.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = markdown.c; sourceTree = "<group>"; };
-		838CA6AD152DB8A10013C064 /* markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = markdown.h; sourceTree = "<group>"; };
-		838CA6B4152DB8A10013C064 /* mkdio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mkdio.c; sourceTree = "<group>"; };
-		838CA6BD152DB8A10013C064 /* resource.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = resource.c; sourceTree = "<group>"; };
-		838CA6BE152DB8A10013C064 /* setup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = setup.c; sourceTree = "<group>"; };
-		838CA6BF152DB8A10013C064 /* tags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tags.c; sourceTree = "<group>"; };
-		838CA6C0152DB8A10013C064 /* tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tags.h; sourceTree = "<group>"; };
-		838CA6EF152DB8A10013C064 /* toc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = toc.c; sourceTree = "<group>"; };
-		838CA6F6152DB8A10013C064 /* xml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xml.c; sourceTree = "<group>"; };
-		838CA6F7152DB8A10013C064 /* xmlpage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xmlpage.c; sourceTree = "<group>"; };
-		838CA6F9152DB8A10013C064 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		838CA6FA152DB8A10013C064 /* mkdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkdio.h; sourceTree = "<group>"; };
-		838CA6FE152DB8A10013C064 /* Discount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Discount.h; sourceTree = "<group>"; };
-		838CA6FF152DB8A10013C064 /* discountWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = discountWrapper.h; sourceTree = "<group>"; };
-		838CA700152DB8A10013C064 /* discountWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = discountWrapper.m; sourceTree = "<group>"; };
-		838CA701152DB8A10013C064 /* markdownWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = markdownWrapper.c; sourceTree = "<group>"; };
-		838CA702152DB8A10013C064 /* markdownWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = markdownWrapper.h; sourceTree = "<group>"; };
-		838CA703152DB8A10013C064 /* mkdioWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mkdioWrapper.c; sourceTree = "<group>"; };
-		838CA704152DB8A10013C064 /* mkdioWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkdioWrapper.h; sourceTree = "<group>"; };
+		838CA68F152DB7BA0013C064 /* _TPMarkdownDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TPMarkdownDataParser.h; sourceTree = "<group>"; };
+		838CA690152DB7BB0013C064 /* _TPMarkdownDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TPMarkdownDataParser.m; sourceTree = "<group>"; };
 		838CA724152DBEEB0013C064 /* TPTemplateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTemplateParser.h; sourceTree = "<group>"; };
 		838CA725152DBEEB0013C064 /* TPTemplateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPTemplateParser.m; sourceTree = "<group>"; };
 		838CA727152DC02D0013C064 /* TPTemplateNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPTemplateNode.h; sourceTree = "<group>"; };
@@ -179,6 +113,8 @@
 		83DC136C153050D8005FCB72 /* Tipi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tipi.h; sourceTree = "<group>"; };
 		83DC136E15305157005FCB72 /* NSArray+Tipi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Tipi.h"; sourceTree = "<group>"; };
 		83DC136F15305157005FCB72 /* NSArray+Tipi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Tipi.m"; sourceTree = "<group>"; };
+		8ABF4EE43CC8652396A277BC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF13F740540678B75EB32155 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830EF9291538816D00394C57 /* libicucore.dylib in Frameworks */,
 				830EF8EB153880A100394C57 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,12 +142,22 @@
 				830EF948153881B100394C57 /* libTipiOSX.a in Frameworks */,
 				838CA68E152DB6920013C064 /* libicucore.dylib in Frameworks */,
 				838CA66E152DB08F0013C064 /* Foundation.framework in Frameworks */,
+				F96D5F0267161687FDD638B3 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B8F4EBB71337825E070DF2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50EFE6511398589916FD65D7 /* Pods.debug.xcconfig */,
+				DF13F740540678B75EB32155 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		830EF8EC153880A100394C57 /* TipiOS (iPhone, iPod touch, iPad) */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +271,7 @@
 				830EF91F1538816300394C57 /* TipiOSX (Lion) */,
 				838CA66C152DB08F0013C064 /* Frameworks */,
 				838CA66A152DB08F0013C064 /* Products */,
+				0B8F4EBB71337825E070DF2F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -347,6 +293,7 @@
 				838CA66D152DB08F0013C064 /* Foundation.framework */,
 				830EF9191538816300394C57 /* Cocoa.framework */,
 				830EF91B1538816300394C57 /* Other Frameworks */,
+				8ABF4EE43CC8652396A277BC /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,68 +317,6 @@
 			path = Tipi;
 			sourceTree = "<group>";
 		};
-		838CA692152DB8A00013C064 /* Discount */ = {
-			isa = PBXGroup;
-			children = (
-				838CA693152DB8A10013C064 /* discount */,
-				838CA6F8152DB8A10013C064 /* discount-config */,
-				838CA6FD152DB8A10013C064 /* discount_wrappers */,
-			);
-			path = Discount;
-			sourceTree = SOURCE_ROOT;
-		};
-		838CA693152DB8A10013C064 /* discount */ = {
-			isa = PBXGroup;
-			children = (
-				838CA694152DB8A10013C064 /* amalloc.c */,
-				838CA695152DB8A10013C064 /* amalloc.h */,
-				838CA696152DB8A10013C064 /* basename.c */,
-				838CA69B152DB8A10013C064 /* Csio.c */,
-				838CA69C152DB8A10013C064 /* css.c */,
-				838CA69D152DB8A10013C064 /* cstring.h */,
-				838CA69E152DB8A10013C064 /* docheader.c */,
-				838CA69F152DB8A10013C064 /* dumptree.c */,
-				838CA6A0152DB8A10013C064 /* emmatch.c */,
-				838CA6A1152DB8A10013C064 /* flags.c */,
-				838CA6A2152DB8A10013C064 /* generate.c */,
-				838CA6A3152DB8A10013C064 /* html5.c */,
-				838CA6AC152DB8A10013C064 /* markdown.c */,
-				838CA6AD152DB8A10013C064 /* markdown.h */,
-				838CA6B4152DB8A10013C064 /* mkdio.c */,
-				838CA6BD152DB8A10013C064 /* resource.c */,
-				838CA6BE152DB8A10013C064 /* setup.c */,
-				838CA6BF152DB8A10013C064 /* tags.c */,
-				838CA6C0152DB8A10013C064 /* tags.h */,
-				838CA6EF152DB8A10013C064 /* toc.c */,
-				838CA6F6152DB8A10013C064 /* xml.c */,
-				838CA6F7152DB8A10013C064 /* xmlpage.c */,
-			);
-			path = discount;
-			sourceTree = "<group>";
-		};
-		838CA6F8152DB8A10013C064 /* discount-config */ = {
-			isa = PBXGroup;
-			children = (
-				838CA6F9152DB8A10013C064 /* config.h */,
-				838CA6FA152DB8A10013C064 /* mkdio.h */,
-			);
-			path = "discount-config";
-			sourceTree = "<group>";
-		};
-		838CA6FD152DB8A10013C064 /* discount_wrappers */ = {
-			isa = PBXGroup;
-			children = (
-				838CA6FE152DB8A10013C064 /* Discount.h */,
-				838CA6FF152DB8A10013C064 /* discountWrapper.h */,
-				838CA700152DB8A10013C064 /* discountWrapper.m */,
-				838CA701152DB8A10013C064 /* markdownWrapper.c */,
-				838CA702152DB8A10013C064 /* markdownWrapper.h */,
-				838CA703152DB8A10013C064 /* mkdioWrapper.c */,
-				838CA704152DB8A10013C064 /* mkdioWrapper.h */,
-			);
-			path = discount_wrappers;
-			sourceTree = "<group>";
-		};
 		838CA721152DBA4B0013C064 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,8 +324,8 @@
 				838CA67D152DB0DA0013C064 /* TPDataParser.m */,
 				838CA67F152DB11E0013C064 /* TPTextDataParser.h */,
 				838CA680152DB11E0013C064 /* TPTextDataParser.m */,
-				838CA68F152DB7BA0013C064 /* TPMarkdownDataParser.h */,
-				838CA690152DB7BB0013C064 /* TPMarkdownDataParser.m */,
+				838CA68F152DB7BA0013C064 /* _TPMarkdownDataParser.h */,
+				838CA690152DB7BB0013C064 /* _TPMarkdownDataParser.m */,
 				838CA724152DBEEB0013C064 /* TPTemplateParser.h */,
 				838CA725152DBEEB0013C064 /* TPTemplateParser.m */,
 				838CA727152DC02D0013C064 /* TPTemplateNode.h */,
@@ -452,13 +337,14 @@
 		838CA722152DBA560013C064 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				838CA692152DB8A00013C064 /* Discount */,
-				838CA68A152DB59F0013C064 /* RegexKitLite.h */,
-				838CA68B152DB59F0013C064 /* RegexKitLite.m */,
 				838CA687152DB55C0013C064 /* NSString+Tipi.h */,
 				838CA688152DB55C0013C064 /* NSString+Tipi.m */,
 				83DC136E15305157005FCB72 /* NSArray+Tipi.h */,
 				83DC136F15305157005FCB72 /* NSArray+Tipi.m */,
+				5A4167AEC4D5A1D6970F0676 /* NSDictionary+Tipi.m */,
+				5A4160959D110175F06BCFB0 /* NSDictionary+Tipi.h */,
+				5A416F6471E7A248160B748C /* TPBlockWrapper.m */,
+				5A416221FFB77230650E2B2B /* TPBlockWrapper.h */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -470,6 +356,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A416103E4303B81D677D826 /* TPBlockWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +364,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4166C9336A7F05B2626C8C /* TPBlockWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,9 +409,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 838CA678152DB08F0013C064 /* Build configuration list for PBXNativeTarget "TipiTest" */;
 			buildPhases = (
+				706D8792C1FF9D4927D0B835 /* Check Pods Manifest.lock */,
 				838CA665152DB08F0013C064 /* Sources */,
 				838CA666152DB08F0013C064 /* Frameworks */,
 				838CA667152DB08F0013C064 /* CopyFiles */,
+				24FFF6CD753B4E5FD0A652A8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -540,7 +430,7 @@
 		838CA660152DB08F0013C064 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "hiddenMemory Ltd.";
 			};
 			buildConfigurationList = 838CA663152DB08F0013C064 /* Build configuration list for PBXProject "Tipi" */;
@@ -562,41 +452,53 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		24FFF6CD753B4E5FD0A652A8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		706D8792C1FF9D4927D0B835 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		830EF8E6153880A100394C57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830EF8F6153880E000394C57 /* amalloc.c in Sources */,
-				830EF8F7153880E000394C57 /* basename.c in Sources */,
-				830EF8F8153880E000394C57 /* Csio.c in Sources */,
-				830EF8F9153880E000394C57 /* css.c in Sources */,
-				830EF8FA153880E000394C57 /* docheader.c in Sources */,
-				830EF8FB153880E000394C57 /* dumptree.c in Sources */,
-				830EF8FC153880E000394C57 /* emmatch.c in Sources */,
-				830EF8FD153880E000394C57 /* flags.c in Sources */,
-				830EF8FE153880E000394C57 /* generate.c in Sources */,
-				830EF8FF153880E000394C57 /* html5.c in Sources */,
-				830EF900153880E000394C57 /* markdown.c in Sources */,
-				830EF901153880E000394C57 /* mkdio.c in Sources */,
-				830EF902153880E000394C57 /* resource.c in Sources */,
-				830EF903153880E000394C57 /* setup.c in Sources */,
-				830EF904153880E000394C57 /* tags.c in Sources */,
-				830EF905153880E000394C57 /* toc.c in Sources */,
-				830EF906153880E000394C57 /* xml.c in Sources */,
-				830EF907153880E000394C57 /* xmlpage.c in Sources */,
-				830EF908153880E000394C57 /* discountWrapper.m in Sources */,
-				830EF909153880E000394C57 /* markdownWrapper.c in Sources */,
-				830EF90A153880E000394C57 /* mkdioWrapper.c in Sources */,
-				830EF90B153880E000394C57 /* RegexKitLite.m in Sources */,
 				830EF90C153880E000394C57 /* NSString+Tipi.m in Sources */,
 				830EF90D153880E000394C57 /* NSArray+Tipi.m in Sources */,
 				830EF90E153880E000394C57 /* TPDataParser.m in Sources */,
 				830EF90F153880E000394C57 /* TPTextDataParser.m in Sources */,
-				830EF910153880E000394C57 /* TPMarkdownDataParser.m in Sources */,
+				830EF910153880E000394C57 /* _TPMarkdownDataParser.m in Sources */,
 				830EF911153880E000394C57 /* TPTemplateParser.m in Sources */,
 				830EF912153880E000394C57 /* TPTemplateNode.m in Sources */,
 				830EF8F1153880A100394C57 /* TipiOS.m in Sources */,
+				5A41628327B81B8959C1BA00 /* TPBlockWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,36 +506,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830EF92A1538818600394C57 /* amalloc.c in Sources */,
-				830EF92B1538818600394C57 /* basename.c in Sources */,
-				830EF92C1538818600394C57 /* Csio.c in Sources */,
-				830EF92D1538818600394C57 /* css.c in Sources */,
-				830EF92E1538818600394C57 /* docheader.c in Sources */,
-				830EF92F1538818600394C57 /* dumptree.c in Sources */,
-				830EF9301538818600394C57 /* emmatch.c in Sources */,
-				830EF9311538818600394C57 /* flags.c in Sources */,
-				830EF9321538818600394C57 /* generate.c in Sources */,
-				830EF9331538818600394C57 /* html5.c in Sources */,
-				830EF9341538818600394C57 /* markdown.c in Sources */,
-				830EF9351538818600394C57 /* mkdio.c in Sources */,
-				830EF9361538818600394C57 /* resource.c in Sources */,
-				830EF9371538818600394C57 /* setup.c in Sources */,
-				830EF9381538818600394C57 /* tags.c in Sources */,
-				830EF9391538818600394C57 /* toc.c in Sources */,
-				830EF93A1538818600394C57 /* xml.c in Sources */,
-				830EF93B1538818600394C57 /* xmlpage.c in Sources */,
-				830EF93C1538818600394C57 /* discountWrapper.m in Sources */,
-				830EF93D1538818600394C57 /* markdownWrapper.c in Sources */,
-				830EF93E1538818600394C57 /* mkdioWrapper.c in Sources */,
-				830EF93F1538818600394C57 /* RegexKitLite.m in Sources */,
 				830EF9401538818600394C57 /* NSString+Tipi.m in Sources */,
 				830EF9411538818600394C57 /* NSArray+Tipi.m in Sources */,
 				830EF9421538818600394C57 /* TPDataParser.m in Sources */,
 				830EF9431538818600394C57 /* TPTextDataParser.m in Sources */,
-				830EF9441538818600394C57 /* TPMarkdownDataParser.m in Sources */,
+				830EF9441538818600394C57 /* _TPMarkdownDataParser.m in Sources */,
 				830EF9451538818600394C57 /* TPTemplateParser.m in Sources */,
 				830EF9461538818600394C57 /* TPTemplateNode.m in Sources */,
 				830EF9241538816300394C57 /* TipiOSX.m in Sources */,
+				5A416EEA41A25FD3AC8A1BA1 /* TPBlockWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +523,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				838CA671152DB08F0013C064 /* main.m in Sources */,
+				5A416FEAFC3A359105A1A070 /* NSDictionary+Tipi.m in Sources */,
+				5A4167D3B0B6B460B37343AC /* TPBlockWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,12 +533,12 @@
 /* Begin XCBuildConfiguration section */
 		830EF8F2153880A100394C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50EFE6511398589916FD65D7 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/TipiOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TipiOS/TipiOS-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -665,12 +548,12 @@
 		};
 		830EF8F3153880A100394C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF13F740540678B75EB32155 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/TipiOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TipiOS/TipiOS-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -681,7 +564,9 @@
 		};
 		830EF9261538816300394C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50EFE6511398589916FD65D7 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TipiOSX/TipiOSX-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -690,7 +575,9 @@
 		};
 		830EF9271538816300394C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF13F740540678B75EB32155 /* Pods.release.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TipiOSX/TipiOSX-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -701,12 +588,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -716,9 +611,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -728,41 +626,54 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		838CA679152DB08F0013C064 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50EFE6511398589916FD65D7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tipi/Tipi-Prefix.pch";
-				HEADER_SEARCH_PATHS = "Discount/**";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 			};
 			name = Debug;
 		};
 		838CA67A152DB08F0013C064 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF13F740540678B75EB32155 /* Pods.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tipi/Tipi-Prefix.pch";
-				HEADER_SEARCH_PATHS = "Discount/**";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 			};
 			name = Release;
 		};
@@ -776,6 +687,7 @@
 				830EF8F3153880A100394C57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		830EF9251538816300394C57 /* Build configuration list for PBXNativeTarget "TipiOSX" */ = {
 			isa = XCConfigurationList;
@@ -784,6 +696,7 @@
 				830EF9271538816300394C57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		838CA663152DB08F0013C064 /* Build configuration list for PBXProject "Tipi" */ = {
 			isa = XCConfigurationList;

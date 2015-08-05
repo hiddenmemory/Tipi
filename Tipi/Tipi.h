@@ -11,7 +11,7 @@
 
 #import "TPDataParser.h"
 #import "TPTextDataParser.h"
-#import "TPMarkdownDataParser.h"
+#import "_TPMarkdownDataParser.h"
 #import "TPTemplateParser.h"
 #import "TPTemplateNode.h"
 #import "NSArray+Tipi.h"

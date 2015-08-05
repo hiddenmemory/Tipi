@@ -40,8 +40,8 @@
 				[currentValue appendFormat:@"\n%@", line];
 			}
 			else {
-				if( [currentKey isEqualToString:@""] == NO ) {
-					[_values setObject:currentValue forKey:currentKey];
+				if( ![currentKey isEqualToString:@""] ) {
+					_values[currentKey] = currentValue;
 					currentKey = @"";
 					currentValue = [NSMutableString string];
 				}
@@ -51,12 +51,12 @@
 			}
 		}
 		
-		if( [currentKey isEqualToString:@""] == NO ) {
-			[_values setObject:currentValue forKey:[currentKey lowercaseString]];
+		if( ![currentKey isEqualToString:@""] ) {
+			_values[currentKey.lowercaseString] = currentValue;
 		}
 		
 		for( NSString *key in [_values allKeys] ) {
-			[_values setObject:[[_values objectForKey:key] tp_stringByTrimmingWhitespace] forKey:key];
+			_values[key] = [_values[key] tp_stringByTrimmingWhitespace];
 		}
 	}
 	return self;

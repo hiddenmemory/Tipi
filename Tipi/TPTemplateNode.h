@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-	TPNodeUnknown,
-	TPNodeText,
-	TPNodeDefinition,
-	TPNodeApplication
+    TPNodeUnknown,
+    TPNodeText,
+    TPNodeDefinition,
+    TPNodeApplication
 } TPNodeType;
 
 @interface TPTemplateNode : NSObject
@@ -22,6 +22,7 @@ typedef enum {
 @property (readonly) NSMutableArray *values;
 @property (readonly) NSMutableDictionary *valuesMap;
 @property (readonly) NSMutableArray *childNodes;
+@property (weak)     TPTemplateNode *parent;
 
 + (TPTemplateNode*)node;
 - (NSString*)expansionUsingEnvironment:(NSMutableDictionary*)environment;
