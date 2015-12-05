@@ -8,7 +8,6 @@
 
 #import "TPTemplateParser.h"
 #import "TPTemplateNode.h"
-#import "_TPMarkdownDataParser.h"
 
 #import "NSString+Tipi.h"
 #import "NSArray+Tipi.h"
