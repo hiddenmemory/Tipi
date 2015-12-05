@@ -1,0 +1,2 @@
+OCDISCOUNT_LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/OCDiscount"
+OCDISCOUNT_OTHER_LDFLAGS = -l"discount" -framework "Foundation"

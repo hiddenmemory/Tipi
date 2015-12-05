@@ -35,9 +35,21 @@
 @synthesize tagStart, tagEnd, tagBlockOpen, tagBlockClose;
 
 + (TPTemplateParser*)parserForFile:(NSString*)path {
-    return [[[self class] alloc] initWithFileAtPath:path];
+    if( path ) {
+        return [[[self class] alloc] initWithFileAtPath:path];
+    }
+    return nil;
 }
-- (id)initWithFileAtPath:(NSString*)path {
+- (instancetype)initWithFileAtPath:(NSString*)path {
+    self = [self initWithString:[NSString stringWithContentsOfFile:path
+                                                                 encoding:NSUTF8StringEncoding
+                                                                    error:nil]];
+    if( self ) {
+        sourcePath = [path stringByDeletingLastPathComponent];
+    }
+    return self;
+}
+- (instancetype)initWithString:(NSString*)_content {
     self = [super init];
     if( self ) {
         root = [TPTemplateNode node];
@@ -47,11 +59,7 @@
         tagBlockClose = @"/";
         tagEnd = @"}}";
 
-        NSMutableString *content = [NSMutableString stringWithContentsOfFile:path
-                                                                    encoding:NSUTF8StringEncoding
-                                                                       error:nil];
-
-        sourcePath = [path stringByDeletingLastPathComponent];
+        NSMutableString *content = [_content mutableCopy];
 
         [self parseContent:content parent:root];
 

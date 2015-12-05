@@ -1,0 +1,7 @@
+#include "OCDiscount.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/OCDiscount" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/OCDiscount" "${PODS_ROOT}/Headers/Public/RegexKitLite"
+LIBRARY_SEARCH_PATHS = ${OCDISCOUNT_LIBRARY_SEARCH_PATHS}
+OTHER_LDFLAGS = ${OCDISCOUNT_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

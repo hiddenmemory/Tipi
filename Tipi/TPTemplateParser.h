@@ -19,6 +19,8 @@
 @property (strong) NSString *tagBlockClose;
 @property (strong) NSString *tagEnd;
 
+- (instancetype)initWithString:(NSString *)_content;
+
 + (TPTemplateParser*)parserForFile:(NSString*)path;
 
 - (NSString*)expansion;

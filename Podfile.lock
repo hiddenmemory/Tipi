@@ -1,0 +1,15 @@
+PODS:
+  - OCDiscount (0.2.0):
+    - OCDiscount/discount (= 0.2.0)
+  - OCDiscount/discount (0.2.0)
+  - RegexKitLite (4.0)
+
+DEPENDENCIES:
+  - OCDiscount
+  - RegexKitLite
+
+SPEC CHECKSUMS:
+  OCDiscount: 02da7a738d53e532fa917bf78f3c6f3e325bad79
+  RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
+
+COCOAPODS: 0.38.2

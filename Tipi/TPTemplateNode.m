@@ -69,7 +69,8 @@
             }
             else if( [[value class] isSubclassOfClass:[TPBlockWrapper class]] ){
                 TPBlockWrapper *wrap = value;
-                [expansion appendString:[wrap expandNode:self environment:environment]];
+                NSString *result = [wrap expandNode:self environment:environment];
+                [expansion appendString:result ?: [NSString stringWithFormat:@"(unable to expand %@)", self.name]];
             }
             else {
                 [expansion appendFormat:@"%@", value];
