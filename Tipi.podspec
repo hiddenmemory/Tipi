@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Tipi"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "The Tipi templating library"
 
   s.description  = <<-DESC
